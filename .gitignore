@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.lernflow/
+.env.local
+*.apkg
+*.db
+tmp/
+out/
+apps/web/dist/
+apps/web/node_modules/
+apps/web/dev-dist/
+apps/web/tsconfig.tsbuildinfo
+apps/macos/.build/
+.DS_Store

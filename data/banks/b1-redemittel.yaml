@@ -1,0 +1,366 @@
+# telc B1 Redemittel — Sprechen & Schreiben phrase bank (lernflow format)
+# Clean-room: canonical German exam phrases (standard Prüvungsredemittel), English glosses authored here.
+level: B1
+categories:
+  - name: SichVorstellen
+    description: Sprechen Teil 1 — Kennenlernen
+    items:
+      - id: rm-vorname
+        category: SichVorstellen
+        term: Ich heiße ... / Mein Name ist ...
+        pos: Redemittel
+        disambiguationHint: giving your name
+        examples:
+          - Guten Tag, mein Name ist Ertiqua Singh und ich komme aus Indien.
+      - id: rm-herkunft
+        category: SichVorstellen
+        term: Ich komme aus ... / Ich wohne seit ... in ...
+        pos: Redemittel
+        disambiguationHint: origin + residence duration (seit + Dat)
+        examples:
+          - Ich komme aus Mumbai und wohne seit zwei Jahren in Usingen.
+      - id: rm-beruf
+        category: SichVorstellen
+        term: Ich arbeite als ... / Ich bin von Beruf ...
+        pos: Redemittel
+        disambiguationHint: profession
+        examples:
+          - Ich arbeite als Gründerin eines kreativen Studios.
+      - id: rm-familie
+        category: SichVorstellen
+        term: Ich bin verheiratet und habe ein Kind.
+        pos: Redemittel
+        disambiguationHint: family status
+        examples:
+          - Ich bin verheiratet und habe eine kleine Tochter.
+      - id: rm-hobby
+        category: SichVorstellen
+        term: In meiner Freizeit ... / Mein Hobby ist ...
+        pos: Redemittel
+        disambiguationHint: hobbies — Ich interessiere mich für...
+        examples:
+          - In meiner Freizeit nähe ich gern und mache Fotos.
+      - id: rm-deutsch
+        category: SichVorstellen
+        term: Ich lerne Deutsch, seit ... / Ich bin auf dem Niveau B1.
+        pos: Redemittel
+        disambiguationHint: language learning background
+        examples:
+          - Ich lerne Deutsch, seit ich in Deutschland wohne — jetzt mache ich B1.
+      - id: rm-frage-partner
+        category: SichVorstellen
+        term: Und Sie? Wie ist das bei Ihnen?
+        pos: Redemittel
+        disambiguationHint: bounce the question back (Teil 1 is a dialogue!)
+        examples:
+          - Ich arbeite selbstständig. Und Sie? Was machen Sie beruflich?
+  - name: MeinungAeussern
+    description: Sprechen Teil 2/3 — opinion
+    items:
+      - id: rm-meinung
+        category: MeinungAeussern
+        term: Ich bin der Meinung, dass ... / Meiner Meinung nach ...
+        pos: Redemittel
+        disambiguationHint: stating opinion — dass verb-final; nach = verb second
+        examples:
+          - Meiner Meinung nach ist Reisen die beste Art, Sprachen zu lernen.
+      - id: rm-ich-glaube
+        category: MeinungAeussern
+        term: Ich glaube, dass ...
+        pos: Redemittel
+        disambiguationHint: softer opinion
+        examples:
+          - Ich glaube, dass man im Alter weniger Reisen kann.
+      - id: rm-meiner-erfahrung
+        category: MeinungAeussern
+        term: Nach meiner Erfahrung ... / Aus meiner Erfahrung ...
+        pos: Redemittel
+        disambiguationHint: personal experience backing
+        examples:
+          - Nach meiner Erfahrung ist Familienurlaub stressiger, aber schöner.
+      - id: rm-fuer-mich
+        category: MeinungAeussern
+        term: Für mich ist wichtig, dass ...
+        pos: Redemittel
+        disambiguationHint: values
+        examples:
+          - Für mich ist wichtig, dass die Kinder sich wohlfühlen.
+  - name: Zustimmen
+    description: agreeing
+    items:
+      - id: rm-da-habe-recht
+        category: Zustimmen
+        term: Da haben Sie recht. / Das sehe ich auch so.
+        pos: Redemittel
+        disambiguationHint: formal agreement
+        examples:
+          - Das sehe ich auch so — Reisen bildet wirklich.
+      - id: rm-stimme-zu
+        category: Zustimmen
+        term: Da stimme ich Ihnen zu.
+        pos: Redemittel
+        disambiguationHint: agree with someone (zu + Dat)
+        examples:
+          - Da stimme ich Ihnen voll und ganz zu.
+      - id: rm-guter-punkt
+        category: Zustimmen
+        term: Das ist ein guter Punkt.
+        pos: Redemittel
+        disambiguationHint: acknowledge a valid argument
+        examples:
+          - Das ist ein guter Punkt, aber man muss auch die Kosten sehen.
+  - name: Widersprechen
+    description: disagreeing politely
+    items:
+      - id: rm-zustimmen-aber
+        category: Widersprechen
+        term: Da muss ich widersprechen. / Ich bin da anderer Meinung.
+        pos: Redemittel
+        disambiguationHint: polite disagreement
+        examples:
+          - Ich bin da anderer Meinung — mit Kindern plant man besser viel.
+      - id: rm-teils-teils
+        category: Widersprechen
+        term: Teilweise stimme ich Ihnen zu, aber ...
+        pos: Redemittel
+        disambiguationHint: partial agreement (best exam answer)
+        examples:
+          - Teilweise stimme ich zu, aber das Preis-Leistungs-Verhältnis stimmt nicht.
+      - id: rm-nicht-ganz
+        category: Widersprechen
+        term: Nicht ganz — ich finde eher, dass ...
+        pos: Redemittel
+        disambiguationHint: soft contradiction
+        examples:
+          - Nicht ganz — ich finde eher, dass kurze Reisen familiesfreundlicher sind.
+  - name: Vorschlagen
+    description: making proposals (Teil 2)
+    items:
+      - id: rm-wie-waere
+        category: Vorschlagen
+        term: Wie wäre es, wenn ...? / Wie wäre es mit + Dat?
+        pos: Redemittel
+        disambiguationHint: gentle proposal
+        examples:
+          - Wie wäre es, wenn wir am Samstag den Markt besuchen?
+      - id: rm-koennen
+        category: Vorschlagen
+        term: Wir könnten doch ... / Ich schlage vor, dass ...
+        pos: Redemittel
+        disambiguationHint: KII proposal + vorschlagen mit dass-Satz
+        examples:
+          - Wir könnten doch erst frühstücken und dann losfahren.
+      - id: rm-lieber
+        category: Vorschlagen
+        term: Ich würde lieber ... / Lass uns doch lieber ...
+        pos: Redemittel
+        disambiguationHint: preferring an option
+        examples:
+          - Ich würde lieber mit dem Zug fahren — das ist entspannter.
+  - name: Nachfragen
+    description: asking for clarification
+    items:
+      - id: rm-koennten-wiederholen
+        category: Nachfragen
+        term: Könnten Sie das bitte wiederholen?
+        pos: Redemittel
+        disambiguationHint: ask to repeat (KII polite)
+        examples:
+          - Könnten Sie das bitte wiederholen? Ich habe es nicht ganz verstanden.
+      - id: rm-meinen-sie
+        category: Nachfragen
+        term: Wie meinen Sie das genau? / Was meinen Sie damit?
+        pos: Redemittel
+        disambiguationHint: ask what someone means
+        examples:
+          - Was meinen Sie damit genau?
+      - id: rm-habe-ich-richtig
+        category: Nachfragen
+        term: Habe ich Sie richtig verstanden, dass ...?
+        pos: Redemittel
+        disambiguationHint: confirm understanding (dass-Satz)
+        examples:
+          - Habe ich Sie richtig verstanden, dass wir bis 10 Uhr da sein müssen?
+  - name: BildSituationBeschreiben
+    description: Sprechen Teil 2 — picture/situation description
+    items:
+      - id: rm-auf-bild
+        category: BildSituationBeschreiben
+        term: Auf dem Bild / In der Situation sieht man, dass ...
+        pos: Redemittel
+        disambiguationHint: opening the description
+        examples:
+          - Auf dem Bild sieht man eine Familie am Bahnhof.
+      - id: rm-im-vordergrund
+        category: BildSituationBeschreiben
+        term: Im Vordergrund / Hintergrund sieht man ...
+        pos: Redemittel
+        disambiguationHint: spatial structure
+        examples:
+          - Im Vordergrund steht ein Kinderwagen, im Hintergrund fährt ein Zug.
+      - id: rm-vermute
+        category: BildSituationBeschreiben
+        term: Ich vermute, dass ... / Wahrscheinlich ... / Vielleicht ...
+        pos: Redemittel
+        disambiguationHint: speculation (pictures require it!)
+        examples:
+          - Ich vermute, dass die Familie in den Urlaub fährt.
+  - name: ProblemLoesung
+    description: Teil 2 problem-solving dialogue
+    items:
+      - id: rm-praesent-problem
+        category: ProblemLoesung
+        term: Das Problem ist, dass ... / Leider ...
+        pos: Redemittel
+        disambiguationHint: present the obstacle
+        examples:
+          - Das Problem ist, dass mein Handy keinen Akku mehr hat.
+      - id: rm-loesung-vorschlagen
+        category: ProblemLoesung
+        term: Wir könnten ... / Eine Lösung wäre, wenn ...
+        pos: Redemittel
+        disambiguationHint: solution proposals
+        examples:
+          - Eine Lösung wäre, wenn wir in ein Café mit WLAN gehen.
+      - id: rm-einigen
+        category: ProblemLoesung
+        term: Gut, dann machen wir das so. / Einverstanden!
+        pos: Redemittel
+        disambiguationHint: closing the negotiation
+        examples:
+          - Gut, dann treffen wir uns um 15 Uhr am Bahnhof. Einverstanden.
+  - name: Praesentation
+    description: Sprechen Teil 3 — Thema presentation
+    items:
+      - id: pr-einleitung
+        category: Praesentation
+        term: Mein Thema ist ... / Ich spreche heute über ...
+        pos: Redemittel
+        disambiguationHint: opening + Gliederung
+        examples:
+          - Mein Thema ist 'Reisen mit Kindern'. Zuerst ..., dann ..., am Schluss ...
+      - id: pr-persoenlich
+        category: Praesentation
+        term: Ich persönlich finde ...
+        pos: Redemittel
+        disambiguationHint: personal part (fixed slot!)
+        examples:
+          - Ich persönlich finde Reisen mit Kindern anstrengend, aber wichtig.
+      - id: pr-vorteile
+        category: Praesentation
+        term: Ein großer Vorteil ist, dass ... / ... hat den Vorteil, dass
+        pos: Redemittel
+        disambiguationHint: listing pros
+        examples:
+          - Ein großer Vorteil ist, dass Kinder Sprachen spielerisch lernen.
+      - id: pr-nachteile
+        category: Praesentation
+        term: Ein Nachteil ist ... / Auf der anderen Seite ...
+        pos: Redemittel
+        disambiguationHint: listing cons (contrast!)
+        examples:
+          - Auf der anderen Seite sind Reisen mit Kindern teurer.
+      - id: pr-ueberleitung
+        category: Praesentation
+        term: Jetzt komme ich zu ... / Nun möchte ich über ... sprechen
+        pos: Redemittel
+        disambiguationHint: transition between slides/points
+        examples:
+          - Jetzt komme ich zu meinen persönlichen Erfahrungen.
+      - id: pr-folgerung
+        category: Praesentation
+        term: Zusammenfassend kann man sagen ... / Deshalb denke ich, dass ...
+        pos: Redemittel
+        disambiguationHint: conclusion (required!)
+        examples:
+          - Zusammenfassend kann man sagen, dass sich Reisen mit guter Planung lohnt.
+      - id: pr-ende
+        category: Praesentation
+        term: Vielen Dank für Ihre Aufmerksamkeit. Haben Sie noch Fragen?
+        pos: Redemittel
+        disambiguationHint: closing + invite questions
+        examples:
+          - Vielen Dank für Ihre Aufmerksamkeit — gern beantworte ich Ihre Fragen.
+  - name: FormellerBrief
+    description: Schreiben Task 2 — formal letter/email
+    items:
+      - id: brief-anrede
+        category: FormellerBrief
+        term: Sehr geehrte Damen und Herren,
+        pos: Redemittel
+        disambiguationHint: standard formal salutation (name it if known)
+        examples:
+          - Sehr geehrte Frau Bauer, / Sehr geehrte Damen und Herren,
+      - id: brief-einleitung
+        category: FormellerBrief
+        term: hiermit ... / Ich schreibe Ihnen, weil ... / mit großem Interesse ...
+        pos: Redemittel
+        disambiguationHint: opening line — state purpose
+        examples:
+          - Ich schreibe Ihnen, weil ich mich über den defekten Drucker beschweren möchte.
+      - id: brief-beschwerde
+        category: FormellerBrief
+        term: Leider muss ich mich beschweren über ... / Ich bin sehr unzufrieden mit ...
+        pos: Redemittel
+        disambiguationHint: complaint body (über + Akk)
+        examples:
+          - Leider muss ich mich über die Verspätung beschweren.
+      - id: brief-bitte
+        category: FormellerBrief
+        term: Ich bitte Sie, ... / Könnten Sie bitte ...? / Ich wäre Ihnen dankbar, wenn ...
+        pos: Redemittel
+        disambiguationHint: request / ask — KII politeness
+        examples:
+          - Ich wäre Ihnen dankbar, wenn Sie den Betrag erstatten würden.
+      - id: brief-antwort
+        category: FormellerBrief
+        term: Über eine Antwort von Ihnen würde ich mich freuen.
+        pos: Redemittel
+        disambiguationHint: closing wish
+        examples:
+          - Über eine baldige Antwort würde ich mich freuen.
+      - id: brief-gruss
+        category: FormellerBrief
+        term: Mit freundlichen Grüßen
+        pos: Redemittel
+        disambiguationHint: formal sign-off (no name below? then yours sincerely fails — this is German!)
+        examples:
+          - Mit freundlichen Grüßen (Sankalp Singh)
+      - id: brief-informell-gruss
+        category: FormellerBrief
+        term: Viele Grüße / Liebe Grüße
+        pos: Redemittel
+        disambiguationHint: Task 1 informal letters
+        examples:
+          - Viele Grüße, dein Sankalp
+  - name: InformellerBrief
+    description: Schreiben Task 1 — informal message to friend
+    items:
+      - id: inf-liebe-anrede
+        category: InformellerBrief
+        term: Liebe Anna, / Lieber Thomas,
+        pos: Redemittel
+        disambiguationHint: informal salutation
+        examples:
+          - Liebe Maria, wie geht es dir?
+      - id: inf-grund
+        category: InformellerBrief
+        term: ich schreibe dir, weil ... / stell dir vor, ...
+        pos: Redemittel
+        disambiguationHint: open with reason/drama
+        examples:
+          - Ich schreibe dir, weil ich eine tolle Nachricht habe!
+      - id: inf-einladung
+        category: InformellerBrief
+        term: Hast du Lust, ...zu + Inf? / Wie wäre es, wenn ...? / Ich würde mich freuen, wenn ...
+        pos: Redemittel
+        disambiguationHint: inviting
+        examples:
+          - Hast du Lust, am Samstag mitzukommen?
+      - id: inf-hoffnung
+        category: InformellerBrief
+        term: Ich hoffe, dass du bald Zeit hast.
+        pos: Redemittel
+        disambiguationHint: hopeful close
+        examples:
+          - Ich hoffe, dass du bald antwortest!

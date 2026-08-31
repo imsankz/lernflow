@@ -1,0 +1,57 @@
+{
+  "name": "lernflow",
+  "version": "0.2.0",
+  "description": "Zero-cost spaced-repetition pipeline: any wordlist CSV → translated Anki deck (TSV/.apkg). Bring your own data, your own AI endpoint. Not a course app.",
+  "type": "module",
+  "bin": {
+    "lernflow": "./bin/lernflow.js"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./csv": "./dist/csv.js",
+    "./lemma": "./dist/lemma.js",
+    "./translate": "./dist/translate.js",
+    "./pos": "./dist/pos.js",
+    "./audio": "./dist/audio.js"
+  },
+  "main": "./dist/index.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node tests/run.js && node tests/words.test.mjs",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "py",
+    "README.md",
+    "llms.txt",
+    "CREDITS.md",
+    "LICENSE"
+  ],
+  "license": "MIT",
+  "author": "Sankalp Singh",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imsankz/lernflow.git"
+  },
+  "keywords": [
+    "anki",
+    "spaced-repetition",
+    "language-learning",
+    "flashcards",
+    "srs",
+    "cli",
+    "apkg",
+    "openai-compatible"
+  ],
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  },
+  "dependencies": {
+    "js-yaml": "^5.4.1"
+  }
+}

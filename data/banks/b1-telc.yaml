@@ -1,0 +1,782 @@
+# telc / Goethe B1 grammar item bank — lernflow format
+# Authored clean-room from German grammar references (Dreyer-Schmitt, Hammer's). No copied exercises.
+level: B1
+categories:
+  - name: Konjunktiv_II
+    description: "Irreale Bedingungen, höfliche Bitten, Ratschläge"
+    items:
+      - id: kii-haette
+        category: Konjunktiv_II
+        term: hätte
+        pos: Verb
+        forms: ich hätte, du hättest, er hätte, wir hätten, ihr hättet, sie hätten
+        disambiguationHint: Konjunktiv II of haben (would have)
+        examples:
+          - Ich hätte gern mehr Zeit für Deutsch.
+          - Wenn ich Geld hätte, würde ich reisen.
+      - id: kii-waere
+        category: Konjunktiv_II
+        term: wäre
+        pos: Verb
+        forms: ich wäre, du wärst, er wäre, wir wären, ihr wärt, sie wären
+        disambiguationHint: Konjunktiv II of sein (would be)
+        examples:
+          - An deiner Stelle wäre ich vorsichtiger.
+          - Es wäre besser, wenn du früher kommst.
+      - id: kii-koennte
+        category: Konjunktiv_II
+        term: könnte
+        pos: Verb
+        forms: ich könnte, du könntest, er könnte, wir könnten, ihr könntet, sie könnten
+        disambiguationHint: Konjunktiv II of können (could / would be able to)
+        examples:
+          - Könnten Sie mir bitte helfen?
+          - Wir könnten am Wochenende ins Museum gehen.
+      - id: kii-muesste
+        category: Konjunktiv_II
+        term: müsste
+        pos: Verb
+        forms: ich müsste, du müsstest, er müsste, wir müssten, ihr müsstet, sie müssten
+        disambiguationHint: Konjunktiv II of müssen (should, ought to)
+        examples:
+          - Du müsstest mehr Vokabeln lernen.
+          - Er müsste eigentlich schon lange hier sein.
+      - id: kii-sollte
+        category: Konjunktiv_II
+        term: sollte
+        pos: Verb
+        forms: ich sollte, du solltest, er sollte, wir sollten, ihr solltet, sie sollten
+        disambiguationHint: advice with sollte (should — milder than müsste)
+        examples:
+          - Sie sollten öfter Deutsch sprechen.
+          - Ich sollte gesünder essen.
+      - id: kii-wuerde-inf
+        category: Konjunktiv_II
+        term: würde + Infinitiv
+        pos: Verb
+        forms: ich würde kaufen, du würdest kaufen, er würde kaufen, wir würden kaufen, ihr würdet kaufen, sie würden kaufen
+        disambiguationHint: würde + Infinitiv for weak verbs without a special KII form
+        examples:
+          - Ich würde gern ein Auto kaufen.
+          - Wir würden lieber zu Hause bleiben.
+      - id: kii-haette-gemacht
+        category: Konjunktiv_II
+        term: hätte ... gemacht
+        pos: Verb
+        forms: ich hätte gemacht, du hättest gemacht, er hätte gemacht
+        disambiguationHint: past Konjunktiv II with hätte + Partizip II (unreal past)
+        examples:
+          - Wenn ich das gewusst hätte, hätte ich anders reagiert.
+          - Er hätte die Prüfung bestanden, wenn er gelernt hätte.
+      - id: kii-waere-gefahren
+        category: Konjunktiv_II
+        term: wäre ... gefahren
+        pos: Verb
+        forms: ich wäre gefahren, du wärst gefahren, er wäre gefahren
+        disambiguationHint: past Konjunktiv II with wäre + Partizip II for motion verbs
+        examples:
+          - Wenn ich Zeit gehabt hätte, wäre ich nach Berlin gefahren.
+          - Sie wäre gern nach Hause geflogen.
+      - id: kii-haette-konnen
+        category: Konjunktiv_II
+        term: hätte ... können
+        pos: Verb
+        forms: ich hätte machen können
+        disambiguationHint: double infinitive in subordinate clauses (Ersatzinfinitiv)
+        examples:
+          - Wenn er mehr geübt hätte, hätte er die Prüfung bestehen können.
+      - id: kii-hoeflich
+        category: Konjunktiv_II
+        term: Könnten Sie ...? / Würden Sie ...?
+        pos: Redemittel
+        disambiguationHint: polite requests in formal situations (exam Sprechen & Schreiben)
+        examples:
+          - Könnten Sie das bitte wiederholen?
+          - Würden Sie mir bitte das Salz geben?
+      - id: kii-wenn-satz
+        category: Konjunktiv_II
+        term: wenn-Satz (irreal)
+        pos: Syntax
+        forms: Wenn + Subjekt + KII ..., würde/wäre ...
+        disambiguationHint: unreal condition — verb final after wenn, inversion in main clause
+        examples:
+          - Wenn ich reich wäre, würde ich die Welt bereisen.
+          - Hätte ich mehr Zeit, würde ich öfter Sport treiben.
+      - id: kii-an-deiner-stelle
+        category: Konjunktiv_II
+        term: an deiner/Ihrer Stelle
+        pos: Redemittel
+        disambiguationHint: giving advice — followed by KII or würde
+        examples:
+          - An Ihrer Stelle würde ich bald eine neue Wohnung suchen.
+  - name: Wechselpraepositionen
+    description: "in/an/auf/über/unter/vor/hinter/neben/zwischen — Akkusativ (Wohin?) vs Dativ (Wo?)"
+    items:
+      - id: wp-in
+        category: Wechselpraepositionen
+        term: in
+        pos: Präposition
+        forms: Wohin? in + Akk — Wo? in + Dat
+        disambiguationHint: in (into a space vs being inside)
+        examples:
+          - Ich gehe in die Schule.
+          - Das Buch liegt in der Tasche.
+      - id: wp-an
+        category: Wechselpraepositionen
+        term: an
+        pos: Präposition
+        forms: Wohin? an + Akk — Wo? an + Dat
+        disambiguationHint: at/on a vertical surface or border
+        examples:
+          - Er hängt das Bild an die Wand.
+          - Wir sitzen am Fenster.
+      - id: wp-auf
+        category: Wechselpraepositionen
+        term: auf
+        pos: Präposition
+        forms: Wohin? auf + Akk — Wo? auf + Dat
+        disambiguationHint: on a horizontal surface; open areas
+        examples:
+          - Die Katze springt auf den Tisch.
+          - Das Glas steht auf dem Tisch.
+      - id: wp-ueber
+        category: Wechselpraepositionen
+        term: über
+        pos: Präposition
+        forms: Wohin? über + Akk — Wo? über + Dat
+        disambiguationHint: over/above (crossing vs position)
+        examples:
+          - Die Katze läuft über die Straße.
+          - Das Bild hängt über dem Sofa.
+      - id: wp-unter
+        category: Wechselpraepositionen
+        term: unter
+        pos: Präposition
+        forms: Wohin? unter + Akk — Wo? unter + Dat
+        disambiguationHint: under/below
+        examples:
+          - Er stellt die Kiste unter den Tisch.
+          - Die Katze schläft unter dem Stuhl.
+      - id: wp-vor
+        category: Wechselpraepositionen
+        term: vor
+        pos: Präposition
+        forms: Wohin? vor + Akk — Wo? vor + Dat
+        disambiguationHint: in front of (also temporal before)
+        examples:
+          - Das Auto fährt vor das Haus.
+          - Wir warten vor dem Bahnhof.
+      - id: wp-hinter
+        category: Wechselpraepositionen
+        term: hinter
+        pos: Präposition
+        forms: Wohin? hinter + Akk — Wo? hinter + Dat
+        disambiguationHint: behind
+        examples:
+          - Der Garten liegt hinter dem Haus.
+          - Sie stellt die Vase hinter den Schrank.
+      - id: wp-neben
+        category: Wechselpraepositionen
+        term: neben
+        pos: Präposition
+        forms: Wohin? neben + Akk — Wo? neben + Dat
+        disambiguationHint: next to
+        examples:
+          - Setz dich neben mich!
+          - Der Supermarkt ist neben der Apotheke.
+      - id: wp-zwischen
+        category: Wechselpraepositionen
+        term: zwischen
+        pos: Präposition
+        forms: Wohin? zwischen + Akk — Wo? zwischen + Dat
+        disambiguationHint: between
+        examples:
+          - Der Park liegt zwischen der Kirche und dem Markt.
+          - Ich stelle die Blume zwischen die Bücher.
+      - id: wp-regel
+        category: Wechselpraepositionen
+        term: wohin? vs wo? Regel
+        pos: Syntax
+        disambiguationHint: movement/destination = Akkusativ, static location = Dativ
+        examples:
+          - Ich lege das Handy auf den Tisch.
+          - Das Handy liegt auf dem Tisch.
+  - name: Nebensatz_Konnektoren
+    description: "weil/dass/wenn/ob/obwohl/bevor/nachdem/während/damit/falls — verb-final word order"
+    items:
+      - id: ns-weil
+        category: Nebensatz_Konnektoren
+        term: weil
+        pos: Konjunktion
+        disambiguationHint: because — reason; verb to final position
+        examples:
+          - Ich lerne Deutsch, weil ich in Deutschland arbeite.
+          - Wir bleiben zu Hause, weil es regnet.
+      - id: ns-dass
+        category: Nebensatz_Konnektoren
+        term: dass
+        pos: Konjunktion
+        disambiguationHint: that (reported thought/speech) — verb-final
+        examples:
+          - Ich glaube, dass die Prüfung schwer wird.
+          - Er sagt, dass er morgen kommt.
+      - id: ns-wenn
+        category: Nebensatz_Konnektoren
+        term: wenn
+        pos: Konjunktion
+        disambiguationHint: if / whenever (repeated or hypothetical) — verb-final
+        examples:
+          - Wenn ich Zeit habe, lese ich ein Buch.
+          - Wenn es regnet, bleiben wir drinnen.
+      - id: ns-als
+        category: Nebensatz_Konnektoren
+        term: als
+        pos: Konjunktion
+        disambiguationHint: when (ONE-TIME past event, vs wenn for repeated) — verb-final
+        examples:
+          - Als ich ein Kind war, wohnten wir in München.
+          - Als ich ankam, begann das Konzert.
+      - id: ns-ob
+        category: Nebensatz_Konnektoren
+        term: ob
+        pos: Konjunktion
+        disambiguationHint: whether (indirect yes/no question) — verb-final
+        examples:
+          - Ich weiß nicht, ob der Zug Verspätung hat.
+          - Kannst du mir sagen, ob das Amt offen ist?
+      - id: ns-obwohl
+        category: Nebensatz_Konnektoren
+        term: obwohl
+        pos: Konjunktion
+        disambiguationHint: although — concessive clause, verb-final
+        examples:
+          - Obwohl er müde ist, lernt er weiter.
+          - Wir gehen spazieren, obwohl es kalt ist.
+      - id: ns-bevor
+        category: Nebensatz_Konnektoren
+        term: bevor
+        pos: Konjunktion
+        disambiguationHint: before (earlier action in main clause) — verb-final
+        examples:
+          - Bevor ich schlafe, lese ich noch etwas.
+          - Ruf an, bevor du kommst!
+      - id: ns-nachdem
+        category: Nebensatz_Konnektoren
+        term: nachdem
+        pos: Konjunktion
+        disambiguationHint: after (subordinate action happens first; mind tense sequence) — verb-final
+        examples:
+          - Nachdem ich gegessen hatte, bin ich spazieren gegangen.
+          - Nachdem du angerufen hast, warte ich auf dich.
+      - id: ns-waehrend
+        category: Nebensatz_Konnektoren
+        term: während
+        pos: Konjunktion
+        disambiguationHint: while (simultaneous) — verb-final; also + Genitiv as preposition
+        examples:
+          - Während ich koche, hört er Musik.
+          - Während der Pause kann man Fragen stellen.
+      - id: ns-damit
+        category: Nebensatz_Konnektoren
+        term: damit
+        pos: Konjunktion
+        disambiguationHint: so that / in order to — verb-final; vs um...zu when subject is same
+        examples:
+          - Ich lerne jeden Tag, damit ich die Prüfung bestehe.
+          - Er spart, damit er ein Auto kaufen kann.
+      - id: ns-falls
+        category: Nebensatz_Konnektoren
+        term: falls
+        pos: Konjunktion
+        disambiguationHint: in case (possible condition) — verb-final
+        examples:
+          - Falls Sie Fragen haben, können Sie mich anrufen.
+          - Falls es regnet, treffen wir uns im Café.
+      - id: ns-um-zu
+        category: Nebensatz_Konnektoren
+        term: um ... zu + Infinitiv
+        pos: Syntax
+        forms: um + ... + zu + Infinitiv (verb at end)
+        disambiguationHint: purpose clause when subject is SAME in both clauses
+        examples:
+          - Ich lerne Deutsch, um in Deutschland zu arbeiten.
+          - Er macht eine Pause, um Kaffee zu trinken.
+  - name: Modalverben
+    description: "können/müssen/dürfen/sollen/wollen/möchten — meaning + Präteritum forms"
+    items:
+      - id: mo-koennen
+        category: Modalverben
+        term: können
+        pos: Modalverb
+        forms: kann, konnte, hat gekonnt
+        disambiguationHint: ability / possibility (can, to be able to)
+        examples:
+          - Ich kann schon gut Deutsch sprechen.
+          - Können Sie mir bitte helfen?
+      - id: mo-muessen
+        category: Modalverben
+        term: müssen
+        pos: Modalverb
+        forms: muss, musste, hat gemusst
+        disambiguationHint: necessity / strong obligation (must, have to)
+        examples:
+          - Ich muss die Prüfung bis November bestehen.
+          - Wir mussten lange auf den Termin warten.
+      - id: mo-duerfen
+        category: Modalverben
+        term: dürfen
+        pos: Modalverb
+        forms: darf, durfte, hat gedurft
+        disambiguationHint: permission (may, allowed to); negation = prohibition
+        examples:
+          - Hier darf man nicht parken.
+          - Darf ich hier rauchen?
+      - id: mo-sollen
+        category: Modalverben
+        term: sollen
+        pos: Modalverb
+        forms: soll, sollte, hat gesollt
+        disambiguationHint: suggestion / expectation from others (ought to, supposed to)
+        examples:
+          - Du solltest mehr Vokabeln wiederholen.
+          - Der Arzt sagt, ich soll mich ausruhen.
+      - id: mo-wollen
+        category: Modalverben
+        term: wollen
+        pos: Modalverb
+        forms: will, wollte, hat gewollt
+        disambiguationHint: strong desire / intention (want to)
+        examples:
+          - Ich will dieses Jahr B1 bestehen.
+          - Er wollte schon immer nach Berlin ziehen.
+      - id: mo-moechten
+        category: Modalverben
+        term: möchten
+        pos: Modalverb
+        forms: ich möchte, du möchtest, er möchte
+        disambiguationHint: polite wish (would like to)
+        examples:
+          - Ich möchte einen Termin vereinbaren.
+          - Möchten Sie Kaffee oder Tee?
+      - id: mo-satzklammer
+        category: Modalverben
+        term: Modalverb + Infinitiv (Satzklammer)
+        pos: Syntax
+        forms: Subjekt + Modal + ... + Infinitiv am Ende; Perfekt mit Ersatzinfinitiv
+        disambiguationHint: second verb goes to the end; past with double infinitive
+        examples:
+          - Ich habe arbeiten müssen.
+          - Sie hat nach Berlin fahren wollen.
+  - name: Perfekt
+    description: "haben/sein + Partizip II; regular ge-t, irregular stems, sein-verbs"
+    items:
+      - id: pf-regel
+        category: Perfekt
+        term: ge...t (regelmäßig)
+        pos: Verb
+        forms: machen → hat gemacht, kaufen → hat gekauft, lernen → hat gelernt
+        disambiguationHint: regular Partizip II ge + stem + t; untrennbare Prefixe (ver-/be-) take no ge
+        examples:
+          - Ich habe gestern Deutsch gelernt.
+          - Er hat das Haus verkauft.
+      - id: pf-gebrochen
+        category: Perfekt
+        term: unregelmäßige Partizipien
+        pos: Verb
+        forms: fahren → gefahren, sprechen → gesprochen, helfen → geholfen, schreiben → geschrieben, trinken → getrunken, fliegen → geflogen, geben → gegeben, nehmen → genommen, essen → gegessen, sehen → gesehen
+        disambiguationHint: vowel-changing verbs with -en participle ending
+        examples:
+          - Wir haben den ganzen Tag gesprochen.
+          - Sie hat ein Buch geschrieben.
+      - id: pf-sein-verbs
+        category: Perfekt
+        term: sein + Partizip II
+        pos: Verb
+        forms: gehen → ist gegangen, fahren → ist gefahren, kommen → ist gekommen, laufen → ist gelaufen, fliegen → ist geflogen, aufstehen → ist aufgestanden
+        disambiguationHint: motion + change-of-state verbs take sein (tragen/bringen take haben!)
+        examples:
+          - Ich bin nach Hause gegangen.
+          - Er ist um 8 Uhr aufgestanden.
+      - id: pf-trennbar
+        category: Perfekt
+        term: trennbare Verben im Perfekt
+        pos: Syntax
+        forms: einkaufen → hat eingekauft, anfangen → hat angefangen, abfahren → ist abgefahren
+        disambiguationHint: ge- sits between prefix and stem
+        examples:
+          - Wir haben gestern eingekauft.
+          - Der Film hat um 20 Uhr angefangen.
+      - id: pf-modal-mix
+        category: Perfekt
+        term: Modalverb im Perfekt (Ersatzinfinitiv)
+        pos: Syntax
+        forms: hat arbeiten müssen — NOT *hat arbeiten gemusst
+        disambiguationHint: with two infinitives the participle is replaced
+        examples:
+          - Ich habe den ganzen Tag arbeiten müssen.
+          - Sie hat kommen wollen.
+      - id: pf-sein-haben-praeteritum
+        category: Perfekt
+        term: war / hatte (Präteritum)
+        pos: Verb
+        forms: ich war, du warst, er war; ich hatte, du hattest, er hatte
+        disambiguationHint: written/narrative past — standard for sein/haben/modals even in speech
+        examples:
+          - Gestern war ich im Kino.
+          - Früher hatten wir einen kleinen Garten.
+  - name: Passiv
+    description: "werden + Partizip II — Präsens, Präteritum; Prozess vs Zustand"
+    items:
+      - id: pa-praesens
+        category: Passiv
+        term: Passiv Präsens
+        pos: Syntax
+        forms: wird/werden + Partizip II
+        disambiguationHint: action focus — agent often omitted; von + Dat for agent
+        examples:
+          - Der Müll wird jeden Dienstag abgeholt.
+          - Hier wird Deutsch gesprochen.
+      - id: pa-praeteritum
+        category: Passiv
+        term: Passiv Präteritum
+        pos: Syntax
+        forms: wurde/wurden + Partizip II
+        disambiguationHint: simple past passive (narrative/written)
+        examples:
+          - Das Haus wurde 1905 gebaut.
+          - Der Zug wurde wegen eines Schadens gestoppt.
+      - id: pa-perfekt
+        category: Passiv
+        term: Passiv Perfekt
+        pos: Syntax
+        forms: ist/sind + Partizip II + worden (NOT *geworden)
+        disambiguationHint: passive uses worden, not geworden
+        examples:
+          - Der Antrag ist bereits bearbeitet worden.
+          - Die Prüfung ist bestanden worden.
+      - id: pa-mit-modal
+        category: Passiv
+        term: Passiv mit Modalverben
+        pos: Syntax
+        forms: muss/kann/darf + Partizip II + werden
+        disambiguationHint: modal passive — werden at the very end
+        examples:
+          - Die Formulare müssen persönlich abgegeben werden.
+          - Hier darf nicht geraucht werden.
+      - id: pa-zustandspassiv
+        category: Passiv
+        term: Zustandspassiv
+        pos: Syntax
+        forms: ist/sind + Partizip II
+        disambiguationHint: result state (the door is closed) — sein, not werden
+        examples:
+          - Das Fenster ist geöffnet.
+          - Die Arbeit ist gemacht.
+  - name: Adjektivdeklination
+    description: "endings after articles (weak/mixed) and without (strong)"
+    items:
+      - id: ad-nom-bestimmt
+        category: Adjektivdeklination
+        term: der gute Wein / die gute Idee / das gute Bier
+        pos: Syntax
+        forms: "nach der/die/das: -e (Nom.), -en (alle anderen)"
+        disambiguationHint: weak declension — article carries the case signal
+        examples:
+          - Der neue Kollege ist sehr nett.
+          - Ich danke der freundlichen Frau.
+      - id: ad-akk-bestimmt
+        category: Adjektivdeklination
+        term: den/die/das + Adjektiv -en (Akk.)
+        pos: Syntax
+        forms: "nach bestimmten Artikel im Akkusativ Maskulinum und Plural: -en"
+        disambiguationHint: den alten Mann, die neuen Schuhe
+        examples:
+          - Ich treffe den alten Freund.
+          - Wir kaufen die neuen Schuhe.
+      - id: ad-mischt-nom
+        category: Adjektivdeklination
+        term: ein guter Wein
+        pos: Syntax
+        forms: "nach ein/kein/mein/sein: -er (Nom. Mask.), -es (Nom. Neutr.), sonst -en"
+        disambiguationHint: mixed declension — adjective shows the case where ein does not
+        examples:
+          - Das ist ein guter Vorschlag.
+          - Er trinkt gern einen guten Kaffee.
+      - id: ad-ohne-artikel
+        category: Adjektivdeklination
+        term: guter Wein / kaltes Wasser / mit gutem Gewissen
+        pos: Syntax
+        forms: "ohne Artikel: strong endings (wie der/die/das)"
+        disambiguationHint: adjective carries the case signal
+        examples:
+          - Kaltes Wasser ist im Sommer angenehm.
+          - Mit gutem Freund fährt man gern.
+      - id: ad-praedikativ
+        category: Adjektivdeklination
+        term: prädikativ ohne Endung
+        pos: Syntax
+        disambiguationHint: after sein/bleiben/werden — NO ending
+        examples:
+          - Der Kaffee ist heiß.
+          - Die Prüfung war schwierig.
+      - id: ad-komparativ
+        category: Adjektivdeklination
+        term: Komparativ + als / am ...sten
+        pos: Syntax
+        forms: schnell → schneller als → am schnellsten; gut → besser → am besten
+        disambiguationHint: als with Komparativ, am with Superlativ; ein bisschen + Komparativ with um
+        examples:
+          - Deutsch ist leichter als Chinesisch.
+          - Im Winter ist es am kältesten.
+  - name: Verben_mit_Praepositionen
+    description: "fixed verbs + preposition + case"
+    items:
+      - id: vp-warten
+        category: Verben_mit_Praepositionen
+        term: warten auf (+Akk.)
+        pos: Verb
+        disambiguationHint: wait for
+        examples:
+          - Wir warten auf den Bus.
+          - Ich warte auf deine Antwort.
+      - id: vp-freuen-auf
+        category: Verben_mit_Praepositionen
+        term: sich freuen auf (+Akk.)
+        pos: Verb
+        disambiguationHint: look forward to (future)
+        examples:
+          - Ich freue mich auf die Prüfung.
+      - id: vp-freuen-ueber
+        category: Verben_mit_Praepositionen
+        term: sich freuen über (+Akk.)
+        pos: Verb
+        disambiguationHint: be pleased about (past/present)
+        examples:
+          - Sie freut sich über das Geschenk.
+      - id: vp-danken
+        category: Verben_mit_Praepositionen
+        term: danken (+Dat.) / sich bedanken für (+Akk.)
+        pos: Verb
+        disambiguationHint: thank someone (Dat) for something (für + Akk)
+        examples:
+          - Ich danke Ihnen für die Hilfe.
+          - Er bedankt sich für die Einladung.
+      - id: vp-denken
+        category: Verben_mit_Praepositionen
+        term: denken an (+Akk.)
+        pos: Verb
+        disambiguationHint: think of/about
+        examples:
+          - Ich denke oft an meinen Urlaub.
+          - Denkst du an die Termine?
+      - id: vp-gehoeren
+        category: Verben_mit_Praepositionen
+        term: gehören zu (+Dat.)
+        pos: Verb
+        disambiguationHint: belong to
+        examples:
+          - Der Schlüssel gehört zu meinem Fahrrad.
+          - Diese Wörter gehören zum Grundwortschatz.
+      - id: vp-interessieren
+        category: Verben_mit_Praepositionen
+        term: sich interessieren für (+Akk.)
+        pos: Verb
+        disambiguationHint: be interested in
+        examples:
+          - Ich interessiere mich für Geschichte.
+          - Interessieren Sie sich für dieses Angebot?
+      - id: vp-angst
+        category: Verben_mit_Praepositionen
+        term: Angst haben vor (+Dat.)
+        pos: Nomen-Verb
+        disambiguationHint: afraid of
+        examples:
+          - Sie hat Angst vor der Prüfung.
+          - Hab keine Angst vor Fehlern.
+      - id: vp-einladen
+        category: Verben_mit_Praepositionen
+        term: einladen zu (+Dat.)
+        pos: Verb
+        disambiguationHint: invite to (an event)
+        examples:
+          - Er lädt uns zum Geburtstag ein.
+          - Wir sind zum Essen eingeladen worden.
+      - id: vp-teilnehmen
+        category: Verben_mit_Praepositionen
+        term: teilnehmen an (+Dat.)
+        pos: Verb
+        disambiguationHint: participate in
+        examples:
+          - Sie nimmt an einem Deutschkurs teil.
+          - Ich habe an der Prüfung teilgenommen.
+      - id: vp-beschweren
+        category: Verben_mit_Praepositionen
+        term: sich beschweren über (+Akk.)
+        pos: Verb
+        disambiguationHint: complain about (formal Schreiben!)
+        examples:
+          - Der Gast beschwert sich über den Lärm.
+          - Ich möchte mich über den defekten Aufzug beschweren.
+      - id: vp-gratulieren
+        category: Verben_mit_Praepositionen
+        term: gratulieren (+Dat.) zu (+Dat.)
+        pos: Verb
+        disambiguationHint: congratulate someone (Dat) on something (zu + Dat)
+        examples:
+          - Ich gratuliere dir zum Erfolg.
+          - Wir gratulieren zum bestandenen B1.
+      - id: vp-zweifeln
+        category: Verben_mit_Praepositionen
+        term: zweifeln an (+Dat.)
+        pos: Verb
+        disambiguationHint: doubt
+        examples:
+          - Ich zweifle an seinem Erfolg.
+          - Er zweifelt daran, ob er die Prüfung schafft.
+      - id: vp-da-compounds
+        category: Verben_mit_Praepositionen
+        term: darauf / worauf — da-/wo-Kompounds
+        pos: Syntax
+        forms: da + Präp → darauf/damit/daran; wo + Präp → worauf/womit/woran
+        disambiguationHint: referring back (da-) or asking (wo-) about a prepositional object
+        examples:
+          - Ich freue mich auf die Prüfung. — Worauf freust du dich?
+          - Er wartet auf den Anruf. — Er wartet darauf.
+  - name: Futur_I
+    description: "werden + Infinitiv — prediction and intention"
+    items:
+      - id: fu-werden
+        category: Futur_I
+        term: Futur I (werden + Infinitiv)
+        pos: Syntax
+        forms: ich werde lernen, du wirst lernen, er wird lernen, wir werden lernen, ihr werdet lernen, sie werden lernen
+        disambiguationHint: future/intention/prediction — infinitive at end
+        examples:
+          - Ich werde im November die B1-Prüfung machen.
+          - Es wird morgen regnen.
+      - id: fu-praesens-zukunft
+        category: Futur_I
+        term: Präsens + Zeitangabe für Zukunft
+        pos: Syntax
+        disambiguationHint: spoken German prefers present + temporal adverb for near future
+        examples:
+          - Nächste Woche fange ich einen neuen Kurs an.
+          - Wir treffen uns morgen.
+  - name: NomenVerbVerbindungen
+    description: "common functional-verb constructions at B1"
+    items:
+      - id: nvv-kritik
+        category: NomenVerbVerbindungen
+        term: Kritik üben an (+Dat.)
+        pos: Nomen-Verb
+        disambiguationHint: to criticize
+        examples:
+          - Der Kunde übt Kritik an der Bedienung.
+      - id: nvv-roelle
+        category: NomenVerbVerbindungen
+        term: eine Rolle spielen
+        pos: Nomen-Verb
+        disambiguationHint: to play a role
+        examples:
+          - Grammatik spielt beim Lernen eine große Rolle.
+      - id: nvv-zur-verfuegung
+        category: NomenVerbVerbindungen
+        term: zur Verfügung stehen
+        pos: Nomen-Verb
+        disambiguationHint: to be available
+        examples:
+          - Der Raum steht ab 15 Uhr zur Verfügung.
+      - id: nvv-in-frage
+        category: NomenVerbVerbindungen
+        term: in Frage kommen
+        pos: Nomen-Verb
+        disambiguationHint: to be an option / come into consideration
+        examples:
+          - Für diesen Job kommen nur Bewerber mit B1 in Frage.
+      - id: nvv-entscheidung
+        category: NomenVerbVerbindungen
+        term: eine Entscheidung treffen
+        pos: Nomen-Verb
+        disambiguationHint: to make a decision
+        examples:
+          - Wir müssen bis Montag eine Entscheidung treffen.
+      - id: nvv-versuch
+        category: NomenVerbVerbindungen
+        term: einen Versuch machen
+        pos: Nomen-Verb
+        disambiguationHint: to make an attempt
+        examples:
+          - Es lohnt sich, einen neuen Versuch zu machen.
+      - id: nvv-frage
+        category: NomenVerbVerbindungen
+        term: eine Frage beantworten
+        pos: Nomen-Verb
+        disambiguationHint: beantworten (no preposition!) vs antworten auf (+Akk)
+        examples:
+          - Bitte beantworten Sie alle Fragen.
+          - Er hat auf meine Frage nicht geantwortet.
+  - name: Praepositionen_Kasus
+    description: "fixed prepositions with Akk / Dat / Gen"
+    items:
+      - id: pk-akk
+        category: Praepositionen_Kasus
+        term: für / ohne / gegen / um / durch (+Akk.)
+        pos: Präposition
+        disambiguationHint: always accusative
+        examples:
+          - Das Geschenk ist für meinen Bruder.
+          - Ohne meinen Bruder gehe ich nicht.
+      - id: pk-dat
+        category: Praepositionen_Kasus
+        term: mit / nach / aus / bei / zu / seit / von / ab (+Dat.)
+        pos: Präposition
+        disambiguationHint: always dative
+        examples:
+          - Ich fahre mit dem Bus.
+          - Seit einem Monat lerne ich jeden Tag.
+      - id: pk-gen
+        category: Praepositionen_Kasus
+        term: wegen / trotz / während / (an)statt (+Gen.)
+        pos: Präposition
+        disambiguationHint: genitive prepositions (colloquial often +Dat, exam wants Gen)
+        examples:
+          - Wegen des Wetters bleiben wir zu Hause.
+          - Trotz des Regens gehen wir spazieren.
+      - id: pk-zu-nach-in
+        category: Praepositionen_Kasus
+        term: zu vs nach vs in
+        pos: Präposition
+        disambiguationHint: zu (persons/institutions), nach (cities/countries without article), in + Akk (countries with article)
+        examples:
+          - Ich gehe zum Arzt.
+          - Wir fahren nach Berlin — in die Schweiz.
+  - name: Infinitivsatz
+    description: "zu/um...zu/ohne...zu/statt...zu + Infinitiv"
+    items:
+      - id: in-zu
+        category: Infinitivsatz
+        term: zu + Infinitiv
+        pos: Syntax
+        disambiguationHint: after beginnen/aufhören, haben Lust/Zeit... — verb to end
+        examples:
+          - Ich habe keine Zeit, Deutsch zu üben.
+          - Er hat aufgehört, fernzusehen.
+      - id: in-ohne-statt
+        category: Infinitivsatz
+        term: ohne ... zu / statt ... zu
+        pos: Syntax
+        disambiguationHint: same subject — infinitive construction, not a finite clause
+        examples:
+          - Er ging, ohne sich zu verabschieden.
+          - Statt zu lernen, sah er fern.
+  - name: Indefinitpronomen
+    description: "man / jemand / niemand / etwas / nichts"
+    items:
+      - id: pr-man
+        category: Indefinitpronomen
+        term: man / jemand / niemand / etwas / nichts
+        pos: Pronomen
+        disambiguationHint: impersonal man (one/you), someone, no one, something, nothing
+        examples:
+          - Hier muss man seinen Ausweis zeigen.
+          - Hast du etwas zu schreiben?
