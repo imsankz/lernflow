@@ -1,14 +1,24 @@
 node_modules/
 dist/
-.lernflow/
+.lernflow/*
+.lernflow/.*
+!.lernflow/translations-german-english.json
 .env.local
 *.apkg
 *.db
 tmp/
-out/
+out/*
+!out/german-core100.tsv
+!out/german-beginner.tsv
+!out/german-intermediate.tsv
+!out/german-advanced.tsv
+!out/german-top3000.tsv
 apps/web/dist/
 apps/web/node_modules/
 apps/web/dev-dist/
 apps/web/tsconfig.tsbuildinfo
 apps/macos/.build/
 .DS_Store
+
+# LernFlow: allow committing pre-built frequency decks and wordlists
+!data/wordlists/

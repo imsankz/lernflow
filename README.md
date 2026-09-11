@@ -29,6 +29,23 @@ Import `out/Mein Deutsch.tsv` into Anki directly (all headers included) or use t
 `.apkg` (needs `python3 -m pip install genanki`). `--audio` uses whatever TTS you have:
 macOS `say` (+ afconvert→m4a), `espeak-ng`, `piper`, or any `LERNFLOW_TTS_CMD` you name.
 
+## Built-in German wordlists
+
+Pre-built German wordlists covering the top 3000 most frequent words (~95% of spoken
+German) are included for quick bootstrapping:
+
+| Wordlist | Words | CEFR range | File |
+|---|---|---|---|
+| Core 100 | 100 | A1–A2 | `data/wordlists/german-core100.csv` |
+| Beginner | 1,000 | A1–B1 | `data/wordlists/german-beginner.csv` |
+| Intermediate | 1,000 | B1–B2 | `data/wordlists/german-intermediate.csv` |
+| Advanced | 1,000 | B2–C2 | `data/wordlists/german-advanced.csv` |
+
+A full reference (`german_top3000.csv`) and direct-import Anki TSV files (`out/german-*.tsv`)
+are also generated. Run `python3 scripts/build-german-wordlists.py` to rebuild from data
+sources. A pre-populated translation cache (`.lernflow/translations-german-english.json`)
+ships with the wordlists, so `lernflow build` works offline without an AI endpoint.
+
 ## What it checks before shipping a deck
 
 Every build runs an **audit gate** (POS validity, gender sanity, duplicate + garbage
