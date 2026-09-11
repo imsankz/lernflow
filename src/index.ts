@@ -44,7 +44,7 @@ Commands
   status                     cache + deck stats for a data dir
   quiz [--n 8] [--seed N]    deterministic daily quiz from deck rows
   grammar <bank.yaml|json>   B1 grammar item-bank -> AI cloze/drill deck (TSV + optional .apkg)
-    --deck NAME      deck name (default: "B1 Grammatik (B1)")
+    --deck NAME      deck name (default: "Grammatik <LEVEL>")
     --out DIR        output dir (default ./out)
     --apkg           also write .apkg (needs python3 + genanki)
     --no-ai          skip AI calls, build drills from bank examples (offline, deterministic)

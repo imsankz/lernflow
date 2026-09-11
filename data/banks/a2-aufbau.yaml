@@ -1,0 +1,219 @@
+# Goethe / telc A2 grammar item bank — lernflow format
+# Authored clean-room from standard German grammar references (Dreyer-Schmitt, Hammer's).
+# No copied exercises. Community contributions welcome — see CONTRIBUTING.md.
+level: A2
+categories:
+  - name: Perfekt
+    description: "Perfekt mit haben/sein — die Vergangenheit im Gespräch"
+    items:
+      - id: a2-perfekt-haben
+        category: Perfekt
+        term: Perfekt mit haben
+        pos: Verb
+        disambiguationHint: most verbs — haben + Partizip II am Ende
+        examples:
+          - Ich habe gestern Pizza gemacht.
+          - Was hast du am Wochenende gemacht?
+      - id: a2-perfekt-sein
+        category: Perfekt
+        term: Perfekt mit sein
+        pos: Verb
+        disambiguationHint: movement + change of state — gehen, fahren, kommen, aufstehen, bleiben
+        examples:
+          - Wir sind nach Hamburg gefahren.
+          - Er ist um sechs Uhr aufgestanden.
+      - id: a2-partizip-ge
+        category: Perfekt
+        term: Partizip II (ge- + -t / ge- + -en)
+        pos: Verb
+        forms: gemacht, gekauft, gearbeitet; gegangen, gefahren, gelesen
+        disambiguationHint: regular -t vs. irregular -en; no ge- for verbs ending in -ieren (studiert)
+        examples:
+          - Ich habe zwei Jahre in Köln studiert.
+      - id: a2-partizip-trennbar
+        category: Perfekt
+        term: Partizip II trennbarer Verben (auf-ge-standen)
+        pos: Verb
+        disambiguationHint: ge- goes between prefix and stem — eingekauft, angerufen, ferngesehen
+        examples:
+          - Ich habe dich gestern angerufen.
+  - name: Praeteritum_Modal
+    description: "Präteritum von sein, haben und Modalverben"
+    items:
+      - id: a2-war-hatte
+        category: Praeteritum_Modal
+        term: war / hatte
+        pos: Verb
+        forms: ich war, du warst, er war; ich hatte, du hattest, er hatte
+        disambiguationHint: sein/haben use Präteritum even in speech — not "ich bin gewesen" in everyday talk
+        examples:
+          - Ich war gestern krank.
+          - Wir hatten keine Zeit.
+      - id: a2-konnte-musste
+        category: Praeteritum_Modal
+        term: konnte / musste / wollte / durfte
+        pos: Verb
+        forms: ich konnte, du konntest; ich musste; ich wollte; ich durfte
+        disambiguationHint: modal past — no Umlaut (konnte, not könnte!)
+        examples:
+          - Ich konnte gestern nicht kommen.
+          - Als Kind wollte ich Pilotin werden.
+  - name: Dativ
+    description: "Dativ — Artikel, Pronomen und Verben mit Dativ"
+    items:
+      - id: a2-dativ-artikel
+        category: Dativ
+        term: dem / der / dem / den (+n)
+        pos: Artikel
+        disambiguationHint: Dativ articles — plural nouns add -n (mit den Kindern)
+        examples:
+          - Ich fahre mit dem Bus.
+          - Das Buch gehört der Lehrerin.
+      - id: a2-dativ-pronomen
+        category: Dativ
+        term: mir, dir, ihm, ihr, uns, euch, ihnen, Ihnen
+        pos: Pronomen
+        disambiguationHint: Dativ pronouns — helfen, danken, gefallen, gehören take Dativ
+        examples:
+          - Kannst du mir helfen?
+          - Das Geschenk gefällt ihr sehr.
+      - id: a2-dativ-verben
+        category: Dativ
+        term: helfen, danken, gefallen, gehören, schmecken
+        pos: Verb
+        disambiguationHint: verbs that always take Dativ — "Ich helfe dir" (never "dich")
+        examples:
+          - Die Suppe schmeckt mir nicht.
+          - Ich danke Ihnen für die Einladung.
+  - name: Wechselpraepositionen
+    description: "in, an, auf, über, unter, vor, hinter, neben, zwischen — wo (Dat) vs. wohin (Akk)"
+    items:
+      - id: a2-wo-dativ
+        category: Wechselpraepositionen
+        term: "Wo? + Dativ"
+        pos: Präposition
+        disambiguationHint: position/no movement — Das Buch liegt auf dem Tisch.
+        examples:
+          - Die Lampe hängt über dem Tisch.
+          - Er wartet vor der Schule.
+      - id: a2-wohin-akkusativ
+        category: Wechselpraepositionen
+        term: "Wohin? + Akkusativ"
+        pos: Präposition
+        disambiguationHint: direction/movement — Ich lege das Buch auf den Tisch.
+        examples:
+          - Ich hänge das Bild an die Wand.
+          - Sie stellt die Tasche neben den Stuhl.
+  - name: Nebensaetze_weil_dass
+    description: "weil, dass, wenn — Verb ans Ende"
+    items:
+      - id: a2-weil
+        category: Nebensaetze_weil_dass
+        term: weil (Verb am Ende)
+        pos: Konjunktion
+        disambiguationHint: because — conjugated verb moves to the very end
+        examples:
+          - Ich bleibe zu Hause, weil ich krank bin.
+          - Er lernt Deutsch, weil er in Berlin arbeiten möchte.
+      - id: a2-dass
+        category: Nebensaetze_weil_dass
+        term: dass (Verb am Ende)
+        pos: Konjunktion
+        disambiguationHint: that — after denken, glauben, hoffen, wissen
+        examples:
+          - Ich glaube, dass es morgen regnet.
+      - id: a2-wenn
+        category: Nebensaetze_weil_dass
+        term: wenn (Verb am Ende)
+        pos: Konjunktion
+        disambiguationHint: if/when — main clause after comma starts with the verb
+        examples:
+          - Wenn es regnet, bleiben wir zu Hause.
+          - Ruf mich an, wenn du Zeit hast.
+  - name: Komparativ_Superlativ
+    description: "Komparativ und Superlativ — größer, am größten"
+    items:
+      - id: a2-komparativ
+        category: Komparativ_Superlativ
+        term: Komparativ (-er + als)
+        pos: Adjektiv
+        forms: klein → kleiner, groß → größer, gut → besser, gern → lieber, viel → mehr
+        disambiguationHint: -er plus Umlaut for many short adjectives; compare with als (never "wie")
+        examples:
+          - Berlin ist größer als München.
+          - Ich trinke lieber Tee als Kaffee.
+      - id: a2-superlativ
+        category: Komparativ_Superlativ
+        term: Superlativ (am -sten)
+        pos: Adjektiv
+        forms: am kleinsten, am größten, am besten, am liebsten, am meisten
+        disambiguationHint: am + -sten as adverb; der/die/das -ste before nouns
+        examples:
+          - Der Sommer ist am schönsten.
+          - Das ist das beste Restaurant der Stadt.
+  - name: Reflexive_Verben
+    description: "Reflexive Verben — sich freuen, sich interessieren"
+    items:
+      - id: a2-reflexiv
+        category: Reflexive_Verben
+        term: sich freuen / sich interessieren / sich treffen
+        pos: Verb
+        forms: ich freue mich, du freust dich, er freut sich, wir freuen uns
+        disambiguationHint: reflexive pronoun matches the subject — sich interessieren für + Akk
+        examples:
+          - Ich freue mich auf das Wochenende.
+          - Er interessiert sich für Musik.
+  - name: Verben_mit_Praepositionen
+    description: "warten auf, denken an, sprechen mit/über"
+    items:
+      - id: a2-warten-auf
+        category: Verben_mit_Praepositionen
+        term: warten auf (+Akk)
+        pos: Verb
+        disambiguationHint: to wait for — Ich warte auf den Bus.
+        examples:
+          - Wir warten seit zehn Minuten auf die Straßenbahn.
+      - id: a2-denken-an
+        category: Verben_mit_Praepositionen
+        term: denken an (+Akk)
+        pos: Verb
+        disambiguationHint: to think of — Ich denke oft an dich.
+        examples:
+          - Denkst du an den Termin morgen?
+      - id: a2-sprechen-ueber
+        category: Verben_mit_Praepositionen
+        term: sprechen über (+Akk) / sprechen mit (+Dat)
+        pos: Verb
+        disambiguationHint: über + topic (Akk), mit + person (Dat)
+        examples:
+          - Wir sprechen über das Wetter.
+          - Ich spreche morgen mit meiner Chefin.
+  - name: Konjunktionen_Position0
+    description: "und, aber, oder, denn — Position 0, Wortstellung bleibt"
+    items:
+      - id: a2-denn
+        category: Konjunktionen_Position0
+        term: denn (Position 0)
+        pos: Konjunktion
+        disambiguationHint: because — unlike weil, word order stays normal after denn
+        examples:
+          - Ich bleibe zu Hause, denn ich bin krank.
+      - id: a2-deshalb
+        category: Konjunktionen_Position0
+        term: deshalb (Position 1, Verb danach)
+        pos: Adverb
+        disambiguationHint: therefore — verb comes directly after deshalb
+        examples:
+          - Ich bin krank, deshalb bleibe ich zu Hause.
+  - name: Ordinalzahlen_Datum
+    description: "Ordinalzahlen und Datum — am dritten Mai"
+    items:
+      - id: a2-datum
+        category: Ordinalzahlen_Datum
+        term: am + Ordinalzahl (Datum)
+        pos: Redemittel
+        forms: am ersten, am zweiten, am dritten, am siebten, am zwanzigsten
+        disambiguationHint: -te up to 19, -ste from 20; watch dritte/siebte
+        examples:
+          - Ich habe am dritten Mai Geburtstag.
+          - Der Kurs beginnt am einundzwanzigsten September.

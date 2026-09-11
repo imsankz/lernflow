@@ -18,3 +18,8 @@ Key facts for agents:
 - SSE-tolerant response parsing: works with endpoints that return event-stream bodies even when stream=false.
 - Library exports: ".", "./csv", "./lemma", "./translate".
 - Ships no wordlists or course content; users bring their own data and keep their own licenses.
+- German wing (reference implementation): grammar banks data/banks/{a1-grundlagen,a2-aufbau,b1-telc,b1-redemittel}.yaml,
+  Goethe A1/A2/B1 decks in apps/web/public/decks/ (lernweb PWA), exam guides in docs/guides/.
+- Landing page + hosted PWA: https://imsankz.github.io/lernflow/ (PWA at /app/), deployed via .github/workflows/pages.yml.
+- Community: language wings are pure data (banks YAML + guides MD + decks JSON) — see CONTRIBUTING.md.
+- Sponsorship: github.com/sponsors/imsankz and ko-fi.com/chasingwhereabouts (.github/FUNDING.yml).

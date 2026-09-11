@@ -39,9 +39,9 @@ export default function DecksScreen() {
   );
 
   const BUNDLED = [
-    { id: "goethe-a1", label: "Goethe A1 Wortliste", file: "/decks/goethe-a1.json" },
-    { id: "goethe-a2", label: "Goethe A2 Wortliste", file: "/decks/goethe-a2.json" },
-    { id: "goethe-b1", label: "Goethe B1 Wortliste", file: "/decks/goethe-b1.json" },
+    { id: "goethe-a1", label: "Goethe A1 Wortliste", file: `${import.meta.env.BASE_URL}decks/goethe-a1.json` },
+    { id: "goethe-a2", label: "Goethe A2 Wortliste", file: `${import.meta.env.BASE_URL}decks/goethe-a2.json` },
+    { id: "goethe-b1", label: "Goethe B1 Wortliste", file: `${import.meta.env.BASE_URL}decks/goethe-b1.json` },
   ];
 
   const importBundledDeck = useCallback(
