@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { addDays, dayIndex, formatDay, fromDayIndex } from "@/lib/dates";
+import { dayIndex, formatDay, fromDayIndex } from "@/lib/dates";
+import { forecastDueByDay } from "@/lib/forecast";
 import { RATING_LABELS } from "@/lib/ratings";
+import { useApp } from "@/store/app";
 import { loadLog, type ReviewLogEntry } from "@/store/storage";
 
 const HEAT_WEEKS = 8;
@@ -23,8 +25,13 @@ interface DayCell {
 }
 
 export default function StatsScreen() {
+  const { cards, refresh } = useApp();
   const [log, setLog] = useState<ReviewLogEntry[]>([]);
   const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    void refresh();
+  }, [refresh]);
 
   useEffect(() => {
     void loadLog().then((l) => {
@@ -67,18 +74,10 @@ export default function StatsScreen() {
     return [1, 2, 3, 4].map((r) => ({ rating: r, count: counts[r] ?? 0, pct: ((counts[r] ?? 0) / totalReviews) * 100, rel: (counts[r] ?? 0) / max }));
   }, [log, totalReviews]);
 
-  // forecast: sum of (due - now) per review, bucketed into next 7 days
-  const forecast = useMemo(() => {
-    const days: { label: string; count: number }[] = [];
-    const todayIdx = dayIndex(today);
-    for (let i = 0; i < 7; i++) {
-      const start = (todayIdx + i) * 86_400_000;
-      const end = start + 86_400_000;
-      const count = log.filter((e) => e.due >= start && e.due < end).length;
-      days.push({ label: i === 0 ? "Today" : formatDay(addDays(today, i)), count });
-    }
-    return days;
-  }, [log, today]);
+  // Forecast: how many cards are scheduled to come due each of the next 7
+  // days, from each card's *current* FSRS due timestamp (see lib/forecast.ts
+  // for why this can't be derived from the review log).
+  const forecast = useMemo(() => forecastDueByDay(cards, today, 7), [cards, today]);
 
   const weekdayLabel = (d: Date) => ["S", "M", "T", "W", "T", "F", "S"][d.getDay()];
 
@@ -150,7 +149,7 @@ export default function StatsScreen() {
       <Card>
         <CardHeader className="pb-3">
           <CardTitle className="text-lg">Next 7 days</CardTitle>
-          <CardDescription>Cards scheduled to come due (based on review history)</CardDescription>
+          <CardDescription>Cards scheduled to come due, from current FSRS schedule</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex items-end gap-2">

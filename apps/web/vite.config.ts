@@ -8,15 +8,21 @@ import { VitePWA } from "vite-plugin-pwa";
 const here = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
+  // Set BASE_PATH when deploying under a subpath (e.g. GitHub Pages: /lernflow/app/).
+  base: process.env.BASE_PATH ?? "/",
+  server: {
+    // Sandboxed preview environments proxy through a generated *.e2b.app host.
+    allowedHosts: true,
+  },
   plugins: [
     react(),
     VitePWA({
       registerType: "autoUpdate",
       includeAssets: ["favicon.svg"],
       manifest: {
-        name: "lernweb",
+        name: "lernweb — LernFlow",
         short_name: "lernweb",
-        description: "German B1 vocabulary trainer — FSRS-5 spaced repetition",
+        description: "Open-source vocabulary trainer — Goethe A1–B1 decks, FSRS-5 spaced repetition",
         theme_color: "#09090b",
         background_color: "#09090b",
         display: "standalone",

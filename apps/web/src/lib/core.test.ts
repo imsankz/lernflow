@@ -5,6 +5,8 @@ import { calcStreak, dayIndex, daysBetween, daysUntil, formatDay, fromDayIndex, 
 import { toDeckRows, isGapCard, buildGap } from "./gap";
 import { parseAnkiTsv, parseRowsJson } from "./parse";
 import { nextCard, previewAll } from "./fsrs";
+import { forecastDueByDay } from "./forecast";
+import { parseBackup, BACKUP_VERSION } from "@/store/backup";
 
 describe("scheduling mapping (FSRS-5 via ts-fsrs)", () => {
   it("Again on a new card keeps it due within minutes (learning state)", () => {
@@ -157,5 +159,66 @@ describe("streak calculation", () => {
     expect(daysBetween(d, addDays(d, 3))).toBe(3);
     expect(daysUntil("2026-09-05", d)).toBe(4);
     expect(daysUntil("2026-08-20", d)).toBe(-12);
+  });
+});
+
+describe("backup file parsing", () => {
+  it("accepts a well-formed backup", () => {
+    const raw = JSON.stringify({
+      app: "lernweb",
+      version: BACKUP_VERSION,
+      exportedAt: "2026-09-10T00:00:00.000Z",
+      data: { "lernweb:settings": { dailyGoal: 20 } },
+    });
+    const b = parseBackup(raw);
+    expect(b.app).toBe("lernweb");
+    expect(b.data["lernweb:settings"]).toEqual({ dailyGoal: 20 });
+  });
+
+  it("rejects files from a different app", () => {
+    expect(() => parseBackup(JSON.stringify({ app: "other", version: 1, data: {} }))).toThrow();
+  });
+
+  it("rejects malformed JSON and missing fields", () => {
+    expect(() => parseBackup("not json")).toThrow();
+    expect(() => parseBackup(JSON.stringify({ app: "lernweb" }))).toThrow();
+    expect(() => parseBackup(JSON.stringify({ app: "lernweb", version: 1 }))).toThrow();
+  });
+});
+
+describe("stats forecast", () => {
+  it("buckets cards by their *current* due date, not a historic snapshot", () => {
+    const today = new Date(2026, 8, 10, 9, 0, 0);
+    const dayMs = 86_400_000;
+    const cards = [
+      { state: 2, due: today.getTime() - 5 * dayMs }, // overdue -> counts as "Today"
+      { state: 2, due: dayIndex(today) * dayMs + 1 * dayMs + 1000 }, // due tomorrow
+      { state: 0, due: today.getTime() }, // new card: excluded from forecast
+    ];
+    const days = forecastDueByDay(cards, today, 3);
+    expect(days).toHaveLength(3);
+    expect(days[0].label).toBe("Today");
+    expect(days[0].count).toBe(1); // only the overdue review card
+    expect(days[1].count).toBe(1); // the tomorrow card
+    expect(days[2].count).toBe(0);
+  });
+
+  it("a card reviewed multiple times only ever occupies one forecast bucket", () => {
+    const today = new Date(2026, 8, 10);
+    const dayMs = 86_400_000;
+    // Simulates the *current* state after several reviews: only the latest
+    // due timestamp exists on the card, unlike a review-log-based forecast
+    // which would still have stale entries from every past review.
+    const cards = [{ state: 2, due: dayIndex(today) * dayMs + 2 * dayMs + 500 }];
+    const days = forecastDueByDay(cards, today, 7);
+    const total = days.reduce((s, d) => s + d.count, 0);
+    expect(total).toBe(1);
+  });
+
+  it("new (never-reviewed) cards never appear in the forecast", () => {
+    const today = new Date(2026, 8, 10);
+    const cards = [{ state: 0, due: today.getTime() }];
+    const days = forecastDueByDay(cards, today, 7);
+    expect(days.reduce((s, d) => s + d.count, 0)).toBe(0);
   });
 });

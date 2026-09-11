@@ -206,5 +206,5 @@ export function bankToRows(bank: GrammarBank, cache: DrillCache): GrammarDeckRow
 }
 
 export function grammarDeckName(level: string): string {
-  return `B1 Grammatik (${level})`;
+  return `Grammatik ${level}`;
 }

@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Progress } from "@/components/ui/progress";
 import { calcStreak, daysUntil, formatDay } from "@/lib/dates";
 import { useApp } from "@/store/app";
+import { loadLog } from "@/store/storage";
 
 function dueForToday(cards: ReturnType<typeof useApp>["cards"]) {
   const now = Date.now();
@@ -15,16 +16,28 @@ function dueForToday(cards: ReturnType<typeof useApp>["cards"]) {
 export default function TodayScreen() {
   const { decks, cards, settings, streakDays, refresh } = useApp();
   const [today] = useState(() => formatDay(new Date()));
+  const [newDoneToday, setNewDoneToday] = useState(0);
 
   useEffect(() => {
     void refresh();
   }, [refresh]);
 
+  useEffect(() => {
+    void loadLog().then((log) => {
+      setNewDoneToday(log.filter((e) => e.wasNew && formatDay(new Date(e.t)) === today).length);
+    });
+  }, [today, cards]);
+
   const due = useMemo(() => dueForToday(cards), [cards]);
   const newCount = useMemo(() => cards.filter((c) => c.state === 0).length, [cards]);
+  const reviewCount = useMemo(() => due.length - newCount, [due, newCount]);
   const streak = useMemo(() => calcStreak(new Set(streakDays)), [streakDays]);
   const goal = settings.dailyGoal;
-  const progress = Math.min(100, Math.round((due.length / Math.max(1, goal)) * 100));
+  // Daily-goal budget tracks *new* cards introduced today, not the raw due
+  // count (which also includes an unbounded backlog of reviews).
+  const newRemaining = Math.max(0, goal - newDoneToday);
+  const newQueuedToday = Math.min(newRemaining, newCount);
+  const progress = Math.min(100, Math.round((newDoneToday / Math.max(1, goal)) * 100));
   const examIn = settings.examDate ? daysUntil(settings.examDate) : null;
   const examSoon = examIn !== null && examIn >= 0 && examIn <= 30;
 
@@ -63,13 +76,15 @@ export default function TodayScreen() {
           <CardHeader className="pb-2">
             <CardTitle className="text-lg">Due now</CardTitle>
             <CardDescription>
-              {due.length} card{due.length === 1 ? "" : "s"} — {newCount} new · {Math.max(0, due.length - newCount)} review
+              {newQueuedToday + reviewCount} card{newQueuedToday + reviewCount === 1 ? "" : "s"} in next session — {newQueuedToday} new
+              (of {newCount} available) · {reviewCount} review
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Progress value={progress} className="mb-1" />
             <p className="text-xs text-muted-foreground">
-              {Math.min(goal, due.length)}/{goal} daily goal ({progress}%)
+              {newDoneToday}/{goal} new cards today ({progress}%)
+              {newRemaining === 0 && newCount > 0 ? " — goal reached, reviews still due" : ""}
             </p>
           </CardContent>
         </Card>
@@ -80,9 +95,9 @@ export default function TodayScreen() {
           <CardTitle className="text-lg">Ready</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
-          {due.length > 0 ? (
+          {newQueuedToday + reviewCount > 0 ? (
             <Link to="/review" className="block">
-              <Button className="h-12 w-full text-base">Start review ({due.length})</Button>
+              <Button className="h-12 w-full text-base">Start review ({newQueuedToday + reviewCount})</Button>
             </Link>
           ) : (
             <p className="text-sm text-muted-foreground">

@@ -1,0 +1,279 @@
+# Goethe / telc A1 grammar item bank — lernflow format
+# Authored clean-room from standard German grammar references (Dreyer-Schmitt, Hammer's).
+# No copied exercises. Community contributions welcome — see CONTRIBUTING.md.
+level: A1
+categories:
+  - name: Sein_Haben
+    description: "sein & haben im Präsens — die zwei wichtigsten Verben"
+    items:
+      - id: a1-sein
+        category: Sein_Haben
+        term: sein
+        pos: Verb
+        forms: ich bin, du bist, er/sie/es ist, wir sind, ihr seid, sie/Sie sind
+        disambiguationHint: to be — irregular, memorize all forms
+        examples:
+          - Ich bin müde.
+          - Wir sind aus Indien.
+      - id: a1-haben
+        category: Sein_Haben
+        term: haben
+        pos: Verb
+        forms: ich habe, du hast, er/sie/es hat, wir haben, ihr habt, sie/Sie haben
+        disambiguationHint: to have — du hast / er hat lose the -b-
+        examples:
+          - Ich habe eine Frage.
+          - Hast du Zeit?
+  - name: Praesens_Konjugation
+    description: "Regelmäßige Verben im Präsens — Endungen -e, -st, -t, -en"
+    items:
+      - id: a1-wohnen
+        category: Praesens_Konjugation
+        term: wohnen
+        pos: Verb
+        forms: ich wohne, du wohnst, er/sie/es wohnt, wir wohnen, ihr wohnt, sie wohnen
+        disambiguationHint: to live (reside) — regular pattern verb
+        examples:
+          - Ich wohne in Berlin.
+          - Wo wohnst du?
+      - id: a1-arbeiten
+        category: Praesens_Konjugation
+        term: arbeiten
+        pos: Verb
+        forms: ich arbeite, du arbeitest, er/sie/es arbeitet, wir arbeiten, ihr arbeitet, sie arbeiten
+        disambiguationHint: to work — stem ends in -t, insert -e- (du arbeitest)
+        examples:
+          - Er arbeitet bei einer Firma.
+          - Arbeitest du am Wochenende?
+      - id: a1-sprechen
+        category: Praesens_Konjugation
+        term: sprechen
+        pos: Verb
+        forms: ich spreche, du sprichst, er/sie/es spricht, wir sprechen, ihr sprecht, sie sprechen
+        disambiguationHint: to speak — vowel change e→i in du/er forms
+        examples:
+          - Sprichst du Deutsch?
+          - Sie spricht drei Sprachen.
+      - id: a1-fahren
+        category: Praesens_Konjugation
+        term: fahren
+        pos: Verb
+        forms: ich fahre, du fährst, er/sie/es fährt, wir fahren, ihr fahrt, sie fahren
+        disambiguationHint: to drive/go — vowel change a→ä in du/er forms
+        examples:
+          - Ich fahre morgen nach München.
+          - Fährst du mit dem Bus?
+  - name: Artikel
+    description: "Bestimmte & unbestimmte Artikel — Nominativ und Akkusativ"
+    items:
+      - id: a1-der-die-das
+        category: Artikel
+        term: der / die / das
+        pos: Artikel
+        disambiguationHint: definite articles — gender is part of the noun, always learn them together
+        examples:
+          - Der Tisch ist neu, die Lampe ist alt, das Buch ist gut.
+      - id: a1-ein-eine
+        category: Artikel
+        term: ein / eine / ein
+        pos: Artikel
+        disambiguationHint: indefinite articles — no plural form ("Bücher", not "eine Bücher")
+        examples:
+          - Das ist ein Stuhl und eine Tasche.
+      - id: a1-akkusativ-den
+        category: Artikel
+        term: den / einen
+        pos: Artikel
+        disambiguationHint: only masculine changes in Akkusativ — der→den, ein→einen
+        examples:
+          - Ich sehe den Mann.
+          - Sie hat einen Bruder.
+  - name: Negation
+    description: "nicht vs. kein"
+    items:
+      - id: a1-nicht
+        category: Negation
+        term: nicht
+        pos: Adverb
+        disambiguationHint: negates verbs, adjectives, and nouns with definite article
+        examples:
+          - Ich komme heute nicht.
+          - Das ist nicht mein Auto.
+      - id: a1-kein
+        category: Negation
+        term: kein / keine
+        pos: Artikel
+        disambiguationHint: negates nouns with indefinite or no article ("Ich habe kein Geld", never "nicht ein")
+        examples:
+          - Ich habe keine Zeit.
+          - Er trinkt keinen Kaffee.
+  - name: Fragen
+    description: "W-Fragen und Ja/Nein-Fragen — Verbposition"
+    items:
+      - id: a1-wfragen
+        category: Fragen
+        term: wer / was / wo / wann / wie / warum / woher / wohin
+        pos: Redemittel
+        disambiguationHint: question word first, verb second
+        examples:
+          - Woher kommst du?
+          - Wann beginnt der Kurs?
+      - id: a1-janein
+        category: Fragen
+        term: Ja/Nein-Frage (Verb zuerst)
+        pos: Redemittel
+        disambiguationHint: verb in position 1 — "Kommst du mit?" not "Du kommst mit?"
+        examples:
+          - Haben Sie ein Zimmer frei?
+          - Wohnst du in Frankfurt?
+      - id: a1-wieviel
+        category: Fragen
+        term: Wie viel / Wie viele
+        pos: Redemittel
+        disambiguationHint: wie viel + uncountable, wie viele + plural
+        examples:
+          - Wie viel kostet das?
+          - Wie viele Kinder haben Sie?
+  - name: Possessivartikel
+    description: "mein, dein, sein, ihr, unser, euer, Ihr"
+    items:
+      - id: a1-mein
+        category: Possessivartikel
+        term: mein / meine
+        pos: Artikel
+        disambiguationHint: endings follow the ein/eine pattern
+        examples:
+          - Das ist mein Bruder und das ist meine Schwester.
+      - id: a1-sein-ihr
+        category: Possessivartikel
+        term: sein / ihr
+        pos: Artikel
+        disambiguationHint: sein = his/its, ihr = her/their — depends on the owner, not the noun
+        examples:
+          - Das ist Peter. Sein Auto ist rot.
+          - Das ist Anna. Ihr Auto ist blau.
+  - name: Modalverben
+    description: "können, müssen, möchten — Satzklammer: Modalverb Position 2, Infinitiv am Ende"
+    items:
+      - id: a1-koennen
+        category: Modalverben
+        term: können
+        pos: Verb
+        forms: ich kann, du kannst, er/sie/es kann, wir können, ihr könnt, sie können
+        disambiguationHint: can / to be able to — ich/er forms have no ending
+        examples:
+          - Ich kann gut kochen.
+          - Kannst du mir helfen?
+      - id: a1-muessen
+        category: Modalverben
+        term: müssen
+        pos: Verb
+        forms: ich muss, du musst, er/sie/es muss, wir müssen, ihr müsst, sie müssen
+        disambiguationHint: must / to have to — infinitive goes to the end of the sentence
+        examples:
+          - Ich muss heute arbeiten.
+          - Musst du morgen früh aufstehen?
+      - id: a1-moechten
+        category: Modalverben
+        term: möchten
+        pos: Verb
+        forms: ich möchte, du möchtest, er/sie/es möchte, wir möchten, ihr möchtet, sie möchten
+        disambiguationHint: would like — polite; the go-to verb for ordering and shopping
+        examples:
+          - Ich möchte einen Kaffee, bitte.
+          - Möchten Sie noch etwas?
+  - name: Trennbare_Verben
+    description: "Trennbare Verben — Präfix ans Satzende"
+    items:
+      - id: a1-aufstehen
+        category: Trennbare_Verben
+        term: aufstehen
+        pos: Verb
+        forms: ich stehe auf, du stehst auf, er steht auf
+        disambiguationHint: to get up — prefix "auf" splits off to the end
+        examples:
+          - Ich stehe um sieben Uhr auf.
+      - id: a1-einkaufen
+        category: Trennbare_Verben
+        term: einkaufen
+        pos: Verb
+        forms: ich kaufe ein, du kaufst ein, er kauft ein
+        disambiguationHint: to shop (for groceries) — "Ich kaufe im Supermarkt ein."
+        examples:
+          - Wir kaufen am Samstag ein.
+      - id: a1-anrufen
+        category: Trennbare_Verben
+        term: anrufen
+        pos: Verb
+        forms: ich rufe an, du rufst an, er ruft an
+        disambiguationHint: to call (phone) — takes Akkusativ ("Ich rufe dich an", not "dir")
+        examples:
+          - Ich rufe dich morgen an.
+  - name: Imperativ
+    description: "Imperativ mit Sie — Höfliche Aufforderungen"
+    items:
+      - id: a1-imperativ-sie
+        category: Imperativ
+        term: "Imperativ (Sie): Verb + Sie"
+        pos: Redemittel
+        disambiguationHint: verb first, then Sie — "Kommen Sie bitte herein."
+        examples:
+          - Nehmen Sie bitte Platz.
+          - Wiederholen Sie das bitte.
+      - id: a1-imperativ-du
+        category: Imperativ
+        term: "Imperativ (du): Verbstamm"
+        pos: Redemittel
+        disambiguationHint: drop -st and the pronoun — "du kommst" → "Komm!"
+        examples:
+          - Komm bitte schnell!
+          - Sprich lauter, bitte!
+  - name: Zeit_Praepositionen
+    description: "um, am, im, von ... bis — Zeitangaben"
+    items:
+      - id: a1-um
+        category: Zeit_Praepositionen
+        term: um (+ Uhrzeit)
+        pos: Präposition
+        disambiguationHint: clock times — um acht Uhr
+        examples:
+          - Der Film beginnt um 20 Uhr.
+      - id: a1-am
+        category: Zeit_Praepositionen
+        term: am (+ Tag)
+        pos: Präposition
+        disambiguationHint: days and parts of day — am Montag, am Morgen (but "in der Nacht")
+        examples:
+          - Am Sonntag habe ich frei.
+      - id: a1-im
+        category: Zeit_Praepositionen
+        term: im (+ Monat/Jahreszeit)
+        pos: Präposition
+        disambiguationHint: months and seasons — im Januar, im Sommer
+        examples:
+          - Im Winter ist es hier sehr kalt.
+      - id: a1-von-bis
+        category: Zeit_Praepositionen
+        term: von ... bis
+        pos: Präposition
+        disambiguationHint: time spans — von Montag bis Freitag
+        examples:
+          - Ich arbeite von neun bis fünf.
+  - name: Personalpronomen
+    description: "Personalpronomen im Nominativ und Akkusativ"
+    items:
+      - id: a1-pron-nom
+        category: Personalpronomen
+        term: ich, du, er, sie, es, wir, ihr, sie, Sie
+        pos: Pronomen
+        disambiguationHint: Sie (formal) is always capitalized
+        examples:
+          - Ich lerne Deutsch und du lernst Englisch.
+      - id: a1-pron-akk
+        category: Personalpronomen
+        term: mich, dich, ihn, sie, es, uns, euch, sie, Sie
+        pos: Pronomen
+        disambiguationHint: Akkusativ pronouns — "Ich sehe ihn" (not "er")
+        examples:
+          - Kennst du ihn?
+          - Ich besuche euch am Wochenende.

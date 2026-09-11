@@ -13,6 +13,8 @@ import {
   grammarDeckName, DRILL_TAG,
 } from "./grammar.js";
 import { loadState, saveState, addWords, markInDeck, wordsCli } from "./words.js";
+import { runDoctor, renderDoctor } from "./doctor.js";
+import { convertAllBanks } from "./banks-to-decks.js";
 
 // Heuristic POS from entry parsing (no AI cost). gender present => Noun;
 // forms looking like "…, hat …/ist …" => Verb; else guess from suffixes.
@@ -44,11 +46,15 @@ Commands
   status                     cache + deck stats for a data dir
   quiz [--n 8] [--seed N]    deterministic daily quiz from deck rows
   grammar <bank.yaml|json>   B1 grammar item-bank -> AI cloze/drill deck (TSV + optional .apkg)
-    --deck NAME      deck name (default: "B1 Grammatik (B1)")
+    --deck NAME      deck name (default: "Grammatik <LEVEL>")
     --out DIR        output dir (default ./out)
     --apkg           also write .apkg (needs python3 + genanki)
     --no-ai          skip AI calls, build drills from bank examples (offline, deterministic)
   init                       write .env.local template
+  doctor                     check environment: Node, python3+genanki, TTS backend, banks, cache
+  banks-to-decks             offline: data/banks/*.yaml -> apps/web/public/decks/*.json (bundled lernweb decks)
+    --banks DIR      source dir (default data/banks)
+    --out DIR        output dir (default apps/web/public/decks)
 
 Config: .env.local in cwd (AI_BASE_URL, AI_API_KEY, AI_MODEL, LERNFLOW_LANG, ...)
 Data/cache live in .lernflow/ (translations.json persists -> incremental runs).
@@ -221,4 +227,18 @@ else if (cmd === "quiz") quiz(args);
 else if (cmd === "init") init();
 else if (cmd === "words") wordsCli(args.slice(1));
 else if (cmd === "grammar") await grammar(args);
-else console.log(HELP);
+else if (cmd === "doctor") {
+  const checks = runDoctor(".");
+  process.stdout.write(renderDoctor(checks));
+  if (checks.some((c) => c.level === "fail")) process.exit(1);
+} else if (cmd === "banks-to-decks") {
+  const banksDir = flag(args, "banks", "data/banks");
+  const outDir = flag(args, "out", "apps/web/public/decks");
+  const results = convertAllBanks(banksDir, outDir);
+  if (!results.length) {
+    console.error(`banks-to-decks: no banks found in ${banksDir}`);
+    process.exit(1);
+  }
+  for (const r of results) console.log(`  ${r.spec.deckLabel}: ${r.rows} rows -> ${r.outPath}`);
+  console.log(`banks-to-decks: wrote ${results.length} deck(s) to ${outDir}`);
+} else console.log(HELP);
