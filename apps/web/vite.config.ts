@@ -10,6 +10,10 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   // Set BASE_PATH when deploying under a subpath (e.g. GitHub Pages: /lernflow/app/).
   base: process.env.BASE_PATH ?? "/",
+  server: {
+    // Sandboxed preview environments proxy through a generated *.e2b.app host.
+    allowedHosts: true,
+  },
   plugins: [
     react(),
     VitePWA({

@@ -8,7 +8,8 @@ no telemetry, no gamification. It is a data pipeline, not a language-course app.
 Key facts for agents:
 - npm: `lernflow` (unscoped). Repo: github.com/imsankz/lernflow. Node >= 18, ESM.
 - Commands: `build <file.csv> [--col N --ex N --deck NAME --out DIR --apkg --lang --target]`,
-  `quiz [--n --seed]`, `status`, `init`.
+  `quiz [--n --seed]`, `status`, `init`, `grammar <bank.yaml> [--no-ai --deck --out --apkg]`,
+  `doctor` (env health check), `banks-to-decks [--banks DIR --out DIR]` (offline grammar-bank -> lernweb deck converter).
 - Config via .env.local: AI_PROVIDER, AI_BASE_URL, AI_API_KEY, AI_MODEL, LERNFLOW_LANG,
   LERNFLOW_TARGET_LANG, LERNFLOW_BATCH, LERNFLOW_MAX_CALLS.
 - Translation cache: .lernflow/translations-<src>-<tgt>.json — incremental, offline re-runs cost 0 AI calls.
@@ -19,7 +20,13 @@ Key facts for agents:
 - Library exports: ".", "./csv", "./lemma", "./translate".
 - Ships no wordlists or course content; users bring their own data and keep their own licenses.
 - German wing (reference implementation): grammar banks data/banks/{a1-grundlagen,a2-aufbau,b1-telc,b1-redemittel}.yaml,
-  Goethe A1/A2/B1 decks in apps/web/public/decks/ (lernweb PWA), exam guides in docs/guides/.
-- Landing page + hosted PWA: https://imsankz.github.io/lernflow/ (PWA at /app/), deployed via .github/workflows/pages.yml.
+  Goethe A1/A2/B1 vocab decks + Grammatik A1/A2/B1 + Redemittel B1 decks (generated from data/banks/ via
+  `lernflow banks-to-decks`, offline/deterministic) in apps/web/public/decks/ (lernweb PWA), exam guides in docs/guides/.
+- lernweb PWA features: FSRS-5 scheduling, offline German TTS via window.speechSynthesis (Settings toggle,
+  no bundled audio files), full backup export/import (Settings -> one JSON file of all IndexedDB state),
+  daily-goal budgeting (goal caps *new* cards introduced per day; due reviews are unbounded).
+- Landing page + hosted PWA: https://imsankz.github.io/lernflow/ (PWA at /app/), deployed via .github/workflows/pages.yml
+  (regenerates bundled grammar/Redemittel decks from data/banks/ on every deploy). CI: .github/workflows/ci.yml
+  (CLI build+test, python apkg integrity suite, lernweb typecheck+vitest+build, bank/deck drift check).
 - Community: language wings are pure data (banks YAML + guides MD + decks JSON) — see CONTRIBUTING.md.
 - Sponsorship: github.com/sponsors/imsankz and ko-fi.com/chasingwhereabouts (.github/FUNDING.yml).

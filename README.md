@@ -59,6 +59,8 @@ suffix rules); `pos` values follow a strict enum.
 | `quiz [--n 8] [--seed N]` | deterministic daily quiz (translate / reverse / gender / gap) from the last deck |
 | `status` | cache + deck stats |
 | `init` | write `.env.local` template |
+| `doctor` | environment health check: Node, python3+genanki, TTS backend, `data/banks/`, `.lernflow/` cache |
+| `banks-to-decks` | offline: `data/banks/*.yaml` → bundled `apps/web/public/decks/*.json` (no AI calls, deterministic) |
 
 ## Why this exists (positioning)
 
@@ -90,10 +92,11 @@ import { Translator } from "lernflow/translate";
 
 | What | Where |
 |---|---|
-| Goethe A1/A2/B1 decks (813 + 1,209 + 2,886 cards) | `apps/web/public/decks/` — study them in the [lernweb PWA](https://imsankz.github.io/lernflow/app/) with FSRS-5 |
-| Grammar item banks A1 → B1 | `data/banks/a1-grundlagen.yaml`, `a2-aufbau.yaml`, `b1-telc.yaml`, `b1-redemittel.yaml` — drill with `lernflow grammar` |
+| Goethe A1/A2/B1 vocab decks (813 + 1,209 + 2,886 cards) | `apps/web/public/decks/goethe-*.json` — study them in the [lernweb PWA](https://imsankz.github.io/lernflow/app/) with FSRS-5 |
+| Grammatik A1/A2/B1 + Redemittel B1 decks (30 + 23 + 88 + 47 items) | `apps/web/public/decks/grammatik-*.json`, `redemittel-b1.json` — generated offline from `data/banks/` via `lernflow banks-to-decks`, importable straight from the Decks tab |
+| Grammar item banks A1 → B1 | `data/banks/a1-grundlagen.yaml`, `a2-aufbau.yaml`, `b1-telc.yaml`, `b1-redemittel.yaml` — drill with `lernflow grammar`, or convert to lernweb decks with `lernflow banks-to-decks` |
 | Exam playbooks (telc/Goethe B1) | `docs/guides/` — grammar map, Schreiben templates, Sprechen playbook |
-| Native apps | `apps/web/` (installable PWA), `apps/macos/` (SwiftUI) |
+| Native apps | `apps/web/` (installable PWA — offline German TTS via SpeechSynthesis, full backup export/import), `apps/macos/` (SwiftUI) |
 
 ## Contributing — add your language 🌍
 

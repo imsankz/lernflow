@@ -24,13 +24,23 @@ jobs:
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: apps/web/package-lock.json
+          cache-dependency-path: |
+            package-lock.json
+            apps/web/package-lock.json
 
       # Landing page (static) -> /
       - name: Assemble site
         run: |
           mkdir -p _pages
           cp -r site/* _pages/
+
+      # Regenerate the Grammatik/Redemittel decks from data/banks/*.yaml so
+      # the bundled lernweb decks always match the source-of-truth banks.
+      - name: banks -> bundled decks
+        run: |
+          npm ci
+          npm run build
+          node dist/index.js banks-to-decks
 
       # lernweb PWA -> /app/
       - name: Build lernweb
