@@ -6,12 +6,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
 import { nextCard, previewAll, type CardInput } from "@/lib/fsrs";
-import { formatInterval, todayKey } from "@/lib/dates";
+import { formatDay, formatInterval, todayKey } from "@/lib/dates";
 import { KEY_TO_RATING, RATING_COLORS, RATING_LABELS } from "@/lib/ratings";
 import { isGapCard, toDeckRows } from "@/lib/gap";
+import { hasGermanVoice, speakGerman, stopSpeaking, ttsSupported } from "@/lib/tts";
 import { useApp, type CardView } from "@/store/app";
 import {
   appendLog,
+  loadLog,
   saveCard,
   saveStreak,
   type CardStored,
@@ -71,36 +73,63 @@ export default function ReviewScreen() {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // build session queue once per mount / deck list
+  // build session queue once per mount / deck list. Daily goal budgets how
+  // many *new* cards enter the session across the whole day (not per
+  // session): count new-card reviews already logged today and only admit
+  // the remainder. Reviews (already due) are unbounded — they're a debt
+  // that must be paid down regardless of the new-card goal.
   useEffect(() => {
     if (queue !== null) return;
-    const now = Date.now();
-    const newCards: SessionCard[] = [];
-    const reviewCards: SessionCard[] = [];
-    for (const c of cards) {
-      const deck = decks.find((d) => d.id === c.deckId);
-      if (!deck) continue;
-      if (c.state === 0) {
-        newCards.push({ card: toStoredCard(c), row: { lemma: "", gender: "", translation: "", forms: "", example: "" } });
-      } else if (c.due <= now) {
-        reviewCards.push({ card: toStoredCard(c), row: { lemma: "", gender: "", translation: "", forms: "", example: "" } });
+    let cancelled = false;
+    void (async () => {
+      const now = Date.now();
+      const deckIds = new Set(decks.map((d) => d.id));
+      const newCards: SessionCard[] = [];
+      const reviewCards: SessionCard[] = [];
+      const emptyRow: DeckRowStored = { lemma: "", gender: "", translation: "", forms: "", example: "" };
+      for (const c of cards) {
+        if (!deckIds.has(c.deckId)) continue;
+        if (c.state === 0) {
+          newCards.push({ card: toStoredCard(c), row: emptyRow });
+        } else if (c.due <= now) {
+          reviewCards.push({ card: toStoredCard(c), row: emptyRow });
+        }
       }
-    }
-    // cap new cards at the daily goal, shuffle for variety; reviews go first
-    newCards.sort(() => Math.random() - 0.5);
-    const capped = newCards.slice(0, Math.max(1, settings.dailyGoal));
-    setQueue([...reviewCards, ...capped]);
+
+      const log = await loadLog();
+      const key = todayKey();
+      const newDoneToday = log.filter((e) => e.wasNew && formatDay(new Date(e.t)) === key).length;
+      const remaining = Math.max(0, settings.dailyGoal - newDoneToday);
+
+      // shuffle for variety, then cap at whatever budget is left today
+      newCards.sort(() => Math.random() - 0.5);
+      const capped = newCards.slice(0, remaining);
+      if (!cancelled) setQueue([...reviewCards, ...capped]);
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, [cards, decks, queue, settings.dailyGoal]);
 
-  // hydrate rows for the queue
+  // hydrate rows for the queue: batch one getDeckRows() call per distinct
+  // deck in the session (not one per card) so a 40-card session against a
+  // single 2,886-row deck does a single IndexedDB read instead of 40.
   useEffect(() => {
     if (!queue || queue.length === 0 || queue[0].row.lemma !== "") return;
+    let cancelled = false;
     void (async () => {
       const { getDeckRows } = await import("@/store/storage");
+      const deckIds = [...new Set(queue.map((s) => s.card.deckId))];
+      const rowsByDeck = new Map<string, DeckRowStored[]>();
+      await Promise.all(
+        deckIds.map(async (id) => {
+          rowsByDeck.set(id, (await getDeckRows(id)) ?? []);
+        }),
+      );
+      if (cancelled) return;
       const hydrated: SessionCard[] = [];
       for (const s of queue) {
-        const rows = (await getDeckRows(s.card.deckId)) ?? [];
-        const row = rows[s.card.rowIndex];
+        const row = rowsByDeck.get(s.card.deckId)?.[s.card.rowIndex];
         if (row) hydrated.push({ card: s.card, row });
       }
       if (hydrated.length !== queue.length) {
@@ -109,10 +138,29 @@ export default function ReviewScreen() {
       }
       setQueue(hydrated);
     })();
+    return () => {
+      cancelled = true;
+    };
   }, [queue]);
 
   const current = queue && idx < queue.length ? queue[idx] : null;
   const isGap = current ? isGapCard(toDeckRows([current.row])[0]) : false;
+  const ttsReady = ttsSupported() && hasGermanVoice();
+
+  const speakFront = useCallback(() => {
+    if (!current) return;
+    speakGerman(current.row.lemma);
+  }, [current]);
+
+  // Autoplay: speak the front the moment a card is shown, and the German
+  // side again on flip (only for non-gap cards, where the back repeats the lemma).
+  useEffect(() => {
+    if (!current || !settings.ttsAutoplay || !settings.ttsEnabled) return;
+    if (!flipped) speakGerman(current.row.lemma);
+  }, [current, flipped, settings.ttsAutoplay, settings.ttsEnabled]);
+
+  // Stop any in-flight utterance when leaving the review screen.
+  useEffect(() => () => stopSpeaking(), []);
 
   useEffect(() => {
     if (flipped && isGap && !gapRevealed) {
@@ -201,6 +249,7 @@ export default function ReviewScreen() {
         cardId: current.card.id,
         rating,
         due: updated.due,
+        wasNew: current.card.state === 0,
       });
       const active = new Set(streakDays);
       active.add(todayKey());
@@ -299,9 +348,16 @@ export default function ReviewScreen() {
               <h2 className="text-3xl font-bold">
                 {current.row.gender ? `${current.row.lemma} (${current.row.gender})` : current.row.lemma}
               </h2>
-              {current.row.audio && (
-                <Button variant="ghost" size="sm" className="text-xs text-muted-foreground" disabled title="Audio not bundled in demo">
-                  🔊 audio unavailable
+              {settings.ttsEnabled && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-xs text-muted-foreground"
+                  onClick={speakFront}
+                  disabled={!ttsReady}
+                  title={ttsReady ? "Speak German (SpeechSynthesis)" : "No German voice found on this device"}
+                >
+                  🔊 {ttsReady ? "Listen" : "no German voice"}
                 </Button>
               )}
             </>
@@ -341,9 +397,16 @@ export default function ReviewScreen() {
                   <p className="text-lg text-primary">{current.row.translation}</p>
                   {current.row.forms && <p className="text-sm text-muted-foreground">{current.row.forms}</p>}
                   {current.row.example && <p className="text-sm italic text-muted-foreground">{current.row.example}</p>}
-                  {current.row.audio && (
-                    <Button variant="ghost" size="sm" className="text-xs text-muted-foreground" disabled title="Audio not bundled in demo">
-                      🔊 audio unavailable
+                  {settings.ttsEnabled && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-xs text-muted-foreground"
+                      onClick={() => speakGerman(current.row.example || current.row.lemma)}
+                      disabled={!ttsReady}
+                      title={ttsReady ? "Speak German (SpeechSynthesis)" : "No German voice found on this device"}
+                    >
+                      🔊 {ttsReady ? "Listen" : "no German voice"}
                     </Button>
                   )}
                 </>

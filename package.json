@@ -20,7 +20,7 @@
   },
   "scripts": {
     "build": "node build.mjs",
-    "test": "node tests/run.js && node tests/words.test.mjs",
+    "test": "node tests/run.js && node tests/words.test.mjs && node tests/doctor.test.mjs",
     "prepublishOnly": "npm run build && npm test"
   },
   "files": [

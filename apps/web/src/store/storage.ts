@@ -44,6 +44,8 @@ export interface Settings {
   openaiBase?: string;
   openaiKey?: string;
   openaiModel?: string;
+  ttsEnabled?: boolean; // speak German cards aloud via SpeechSynthesis (default true)
+  ttsAutoplay?: boolean; // speak automatically when a card is shown/flipped (default false)
 }
 
 export interface ReviewLogEntry {
@@ -52,6 +54,7 @@ export interface ReviewLogEntry {
   cardId: string;
   rating: number;
   due: number;
+  wasNew?: boolean; // true if the card was in the "new" state (0) before this review
 }
 
 export interface StreakInfo {
@@ -61,6 +64,8 @@ export interface StreakInfo {
 
 export const DEFAULT_SETTINGS: Settings = {
   dailyGoal: 40,
+  ttsEnabled: true,
+  ttsAutoplay: false,
 };
 
 export const META_KEY_STR = META_KEY;

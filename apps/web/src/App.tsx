@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { HashRouter, NavLink, Navigate, Route, Routes } from "react-router-dom";
 import { AppProvider } from "@/store/app";
+import { primeVoices } from "@/lib/tts";
 
 import DecksScreen from "./screens/Decks";
 import ReviewScreen from "./screens/Review";
@@ -56,6 +57,12 @@ export default function App() {
       /* ignore */
     }
   }, [dark]);
+
+  // Voice lists load async on most browsers — prime once at app start so the
+  // first "speak" on a review card isn't silently dropped.
+  useEffect(() => {
+    primeVoices();
+  }, []);
 
   return (
     <AppProvider>
