@@ -10,6 +10,8 @@ LernFlow turns any wordlist (CSV/TSV) into an Anki deck you own, with translatio
 | `guides/b1-writing-templates.md` | telc Schreiben Part 1 (informell) + Part 2 (formell): timing plan, Redemittel, two full Muster with point-by-point why-they-pass checklists. |
 | `guides/b1-sprechen-playbook.md` | Mündlich Teil 1–3: typical questions + answer patterns, negotiation phrases, and the 5-point Folie skeleton for the Präsentation. |
 
+Grammar item banks live in `data/banks/` and cover the whole path to B1: `a1-grundlagen.yaml` (sein/haben, articles, modals, separable verbs, W-Fragen…), `a2-aufbau.yaml` (Perfekt, Dativ, Wechselpräpositionen, Nebensätze…), `b1-telc.yaml` (Konjunktiv II, Passiv…), and `b1-redemittel.yaml` (exam phrases). Drill any of them with `lernflow grammar data/banks/<bank>.yaml` (`--no-ai` works offline). Prefer studying in the browser? The [lernweb PWA](https://imsankz.github.io/lernflow/app/) ships the Goethe A1/A2/B1 decks with FSRS-5 scheduling.
+
 The guides target an English speaker preparing telc B1 at ~A2/B1, but the grammar map and Redemittel transfer directly to the Goethe-Zertifikat B1.
 
 ## Using decks with the guides

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="LernFlow — open-source language learning pipeline. Any wordlist → translated Anki deck with your own AI endpoint. German wing fully built (A1–B1); every language welcome."/>
+<meta property="og:title" content="LernFlow — Open-Source Language Learning"/>
+<meta property="og:description" content="Your wordlists, your deck, your machine. German A1–B1 grammar banks, Goethe decks, exam guides — and a skeleton any language can fill. MIT."/>
+<meta property="og:image" content="https://imsankz.github.io/lernflow/og-image.png"/>
+<meta property="og:url" content="https://imsankz.github.io/lernflow/"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<title>LernFlow — Open-Source Language Learning</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧠%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="assets/flow-design.css" rel="stylesheet"/>
+</head>
+<body>
+<header><div class="container"><div class="header-inner">
+<a href="#" class="logo"><span class="logo-icon">🧠</span><span>LernFlow</span></a>
+<nav><a href="#german">German wing</a><a href="#pipeline">Pipeline</a><a href="#contribute">Contribute</a><a href="#series">Series</a><a href="https://github.com/imsankz/lernflow" class="btn btn-small btn-primary">GitHub →</a></nav>
+</div></div></header>
+
+<section class="hero"><div class="container">
+<div class="flow-selector reveal" style="margin-bottom:32px">
+<a href="https://imsankz.github.io/lernflow/" class="flow-pill active">🧠 LernFlow</a>
+<a href="https://imsankz.github.io/SECflow/" class="flow-pill">🔐 SECflow</a>
+<a href="https://imsankz.github.io/SEOflow/" class="flow-pill">🌊 SeoFlow</a>
+<a href="https://imsankz.github.io/backlinkflow/" class="flow-pill">🔗 BacklinkFlow</a>
+</div>
+<h1 class="reveal">Language learning,<br/><span class="gradient-text">open-sourced</span></h1>
+<p class="reveal">Any wordlist → a translated Anki deck you own forever, built with <strong>your own AI endpoint</strong>. No accounts, no streaks, no walled garden. The German wing ships complete — A1→B1 grammar banks, Goethe decks, exam playbooks — and the skeleton is ready for every other language. That part is yours.</p>
+<div class="cta reveal">
+<a href="https://github.com/imsankz/lernflow#quick-start" class="btn btn-primary">🚀 npm i -g lernflow</a>
+<a href="app/" class="btn btn-secondary">Try lernweb (PWA) →</a>
+</div>
+<p class="hero-note reveal">CLI + PWA + macOS app · Node 18+ · zero cloud · MIT</p>
+</div></section>
+
+<section id="german"><div class="container section-centered">
+<h2 class="section-title reveal">The <span class="gradient-text">German wing</span> — reference implementation</h2>
+<p class="section-subtitle reveal">Built to the best of our ability, so every other language has a gold standard to copy.</p>
+<div class="stats-row">
+<div class="stat-card reveal"><div class="stat-number">4,908</div><div class="stat-label">Goethe deck cards</div><div class="stat-desc">A1 (813) + A2 (1,209) + B1 (2,886) lemmas with gender, translation & example</div></div>
+<div class="stat-card reveal"><div class="stat-number">4</div><div class="stat-label">grammar item banks</div><div class="stat-desc">A1 Grundlagen · A2 Aufbau · B1 telc · B1 Redemittel — AI cloze drills, offline fallback</div></div>
+<div class="stat-card reveal"><div class="stat-number">3</div><div class="stat-label">exam playbooks</div><div class="stat-desc">B1 grammar map, Schreiben templates, Sprechen playbook (telc/Goethe)</div></div>
+</div>
+<div class="features-grid" style="margin-top:48px">
+<div class="feature-card reveal"><div class="icon">🃏</div><h3>Goethe Wortlisten decks</h3><p>A1/A2/B1 vocabulary as ready decks in the lernweb PWA — FSRS-5 spaced repetition, offline-first, installable on your phone.</p></div>
+<div class="feature-card reveal"><div class="icon">📐</div><h3>Graded grammar banks</h3><p>sein/haben → Perfekt & Dativ → Konjunktiv II & Passiv. Clean-room YAML item banks that <code>lernflow grammar</code> turns into cloze drill decks.</p></div>
+<div class="feature-card reveal"><div class="icon">📝</div><h3>Exam-ready guides</h3><p>Tick-box B1 syllabus, telc Schreiben Muster with point-by-point pass checklists, Sprechen Teil 1–3 answer patterns.</p></div>
+<div class="feature-card reveal"><div class="icon">🔊</div><h3>Audio on every card</h3><p><code>--audio</code> attaches TTS clips via macOS say, espeak-ng, piper, or any command you name. Gender-aware German lemma parsing built in.</p></div>
+</div>
+</div></section>
+
+<section id="pipeline"><div class="container section-centered">
+<h2 class="section-title reveal">A pipeline, <span class="gradient-text">not a course app</span></h2>
+<p class="section-subtitle reveal">Duolingo sells you a closed loop. LernFlow is the open one: bring your own vocabulary, keep your deck forever, in standard Anki formats.</p>
+<div class="screenshot-frame reveal"><pre style="text-align:left;padding:28px;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.8;color:var(--text-secondary);overflow-x:auto"><code>any wordlist CSV/TSV ─▶ lemma/gender/forms ─▶ AI translate (cached) ─▶ deck.tsv + deck.apkg
+                                                            └────────▶ daily quiz (offline)
+
+$ lernflow build wortliste.tsv --deck "Mein Deutsch" --apkg --audio
+$ lernflow grammar data/banks/a1-grundlagen.yaml
+$ lernflow quiz --n 8</code></pre></div>
+<div class="features-grid" style="margin-top:48px">
+<div class="feature-card reveal"><div class="icon">🏠</div><h3>Your machine, your data</h3><p>Point <code>AI_BASE_URL</code> at Ollama, llama.cpp, or any OpenAI-compatible endpoint. Nothing leaves your LAN unless you say so.</p></div>
+<div class="feature-card reveal"><div class="icon">🛡️</div><h3>Audit gate on every build</h3><p>POS validity, gender sanity, duplicate & garbage-translation detection — fails fast with row numbers. No silent junk in your deck.</p></div>
+<div class="feature-card reveal"><div class="icon">💾</div><h3>Cached, deterministic, offline</h3><p>Every translation cached; re-runs cost zero AI calls. The daily quiz is seeded — same seed, same questions, real retention measurement.</p></div>
+</div>
+</div></section>
+
+<section id="contribute"><div class="container section-centered">
+<h2 class="section-title reveal">Your language is <span class="gradient-text">a PR away</span></h2>
+<p class="section-subtitle reveal">A language wing is pure data — no code required. The pipeline already works for any language pair; German just got there first.</p>
+<div class="features-grid">
+<div class="feature-card reveal"><div class="icon">🌍</div><h3>1. Grammar banks</h3><p>Copy <code>data/banks/a1-grundlagen.yaml</code>, write clean-room items for your language, validate with <code>lernflow grammar --no-ai</code>. One A1 bank is a great first PR.</p></div>
+<div class="feature-card reveal"><div class="icon">📚</div><h3>2. Study guides</h3><p>One CEFR level, one real exam — DELF, DELE, JLPT, TOPIK, CILS. The German B1 guides in <code>docs/guides/</code> show the pattern.</p></div>
+<div class="feature-card reveal"><div class="icon">🗂️</div><h3>3. Web decks</h3><p>A JSON array of cards for the PWA, from wordlists you're allowed to redistribute. Name the source and license; we track credits.</p></div>
+</div>
+<div class="cta reveal" style="margin-top:40px">
+<a href="https://github.com/imsankz/lernflow/blob/main/CONTRIBUTING.md" class="btn btn-primary">Read CONTRIBUTING.md →</a>
+<a href="https://github.com/imsankz/lernflow/issues/new?template=new-language-wing.md" class="btn btn-secondary">Propose a language wing</a>
+</div>
+</div></section>
+
+<section id="series"><div class="container section-centered">
+<h2 class="section-title reveal">The <span class="gradient-text">flow</span> series</h2>
+<p class="section-subtitle reveal">Free engines + your own AI agent. MIT, npm, no upsells.</p>
+<div class="flow-cards">
+<div class="flow-card reveal"><div class="icon">🧠</div><h3>LernFlow</h3><p>Open-source language learning. You are here.</p><span class="tag">You are here</span></div>
+<div class="flow-card reveal"><div class="icon">🔐</div><h3>SECflow</h3><p>Security scanning your agent can act on.</p><a href="https://imsankz.github.io/SECflow/" class="btn btn-small btn-secondary">View →</a></div>
+<div class="flow-card reveal"><div class="icon">🌊</div><h3>SeoFlow</h3><p>SEO pipeline — audit, links, content.</p><a href="https://imsankz.github.io/SEOflow/" class="btn btn-small btn-secondary">View →</a></div>
+<div class="flow-card reveal"><div class="icon">🔗</div><h3>BacklinkFlow</h3><p>1,123 directories, AI copy, Playwright.</p><a href="https://imsankz.github.io/backlinkflow/" class="btn btn-small btn-secondary">View →</a></div>
+</div>
+</div></section>
+
+<section id="sponsor"><div class="container section-centered">
+<h2 class="section-title reveal">Keep LernFlow <span class="gradient-text">free</span></h2>
+<p class="section-subtitle reveal">MIT licensed, no SaaS, no upsells — and it stays that way thanks to people like you. If LernFlow saved you a subscription or got you through an exam, consider sponsoring the work.</p>
+<div class="sponsor-grid">
+<a href="https://github.com/sponsors/imsankz" target="_blank" rel="noopener" class="sponsor-card reveal">
+<div class="icon">❤️</div><h3>GitHub Sponsors</h3><p>Monthly or one-time support for @imsankz, right from your GitHub account. Funds the whole flow series.</p><span class="btn btn-primary btn-small">Sponsor on GitHub →</span>
+</a>
+<a href="https://ko-fi.com/chasingwhereabouts" target="_blank" rel="noopener" class="sponsor-card reveal">
+<div class="icon">☕</div><h3>Ko-fi</h3><p>Prefer a one-off? Buy the maintainer a coffee — no account needed, every cup counts.</p><span class="btn btn-secondary btn-small">Buy me a coffee →</span>
+</a>
+</div>
+</div></section>
+
+<footer><div class="container">
+<div class="footer-grid">
+<div class="footer-col"><h4>LernFlow</h4><ul><li><a href="https://github.com/imsankz/lernflow">GitHub</a></li><li><a href="https://www.npmjs.com/package/lernflow">npm</a></li><li><a href="app/">lernweb PWA</a></li><li><a href="https://github.com/imsankz/lernflow/releases">Releases</a></li></ul></div>
+<div class="footer-col"><h4>Docs</h4><ul><li><a href="https://github.com/imsankz/lernflow#quick-start">Quick start</a></li><li><a href="https://github.com/imsankz/lernflow/tree/main/docs/guides">Exam guides</a></li><li><a href="https://github.com/imsankz/lernflow/blob/main/CONTRIBUTING.md">Contributing</a></li></ul></div>
+<div class="footer-col"><h4>Series</h4><ul><li><a href="https://imsankz.github.io/lernflow/">LernFlow</a></li><li><a href="https://imsankz.github.io/SECflow/">SECflow</a></li><li><a href="https://imsankz.github.io/SEOflow/">SeoFlow</a></li><li><a href="https://imsankz.github.io/backlinkflow/">BacklinkFlow</a></li></ul></div>
+<div class="footer-col"><h4>Built by</h4><ul><li><a href="https://github.com/imsankz">@imsankz</a></li><li><a href="https://github.com/sponsors/imsankz">❤️ GitHub Sponsors</a></li><li><a href="https://ko-fi.com/chasingwhereabouts">☕ Ko-fi</a></li><li><div id="kofiwidget2"></div></li><li><span style="color:var(--text-muted);font-size:13px">MIT licensed · free forever</span></li></ul></div>
+</div>
+<div class="footer-bottom"><p>LernFlow · MIT · Your wordlists, your deck, your machine</p></div>
+</div></footer>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+<script type="text/javascript" src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"></script>
+<script type="text/javascript">kofiwidget2.init('Buy me a Coffee','#72a4f2','B0B4EDYFG');kofiwidget2.draw();</script>
+</body></html>
